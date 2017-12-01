@@ -6,7 +6,8 @@ var track = class Track {
     /**
      * 
      * @param {string} id 
-     * @param {string} name 
+     * @param {string} name
+     * @param {Number} distance 
      * @param {Number} pauseDuration 
      * @param {bool} isForEveryone 
      * @param {Number} difficulty 
@@ -16,9 +17,10 @@ var track = class Track {
      * @param {POI[]} pois 
      * @param {string} typeTrackID 
      */
-    constructor(id, name, pauseDuration, isForEveryone, difficulty, idUser, positions, pods, pois, typeTrackID) {
+    constructor(id, name, distance, pauseDuration, isForEveryone, difficulty, idUser, positions, pods, pois, typeTrackID) {
         this.id = id;
         this.name = name;
+        this.distance = distance;
         this.pauseDuration = pauseDuration;
         this.isForEveryone = isForEveryone;
         this.difficulty = difficulty;
@@ -32,6 +34,7 @@ var track = class Track {
     convertToFirebase(){
         return {
             name : this.name,
+            distance : this.distance,
             pauseDuration : this.pauseDuration,
             isForEveryone : this.isForEveryone,
             difficulty : this.difficulty,

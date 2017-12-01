@@ -15,3 +15,5 @@ var user = class User{
         this.typeUser = typeUser;
     }
 }
+
+module.exports = user;

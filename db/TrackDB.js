@@ -1,5 +1,12 @@
+var Position = require('../models/Position');
 var Track = require('../models/Track');
+var POD = require('../models/Pod');
+var POI = require('../models/Poi');
+var RatePOD = require('../models/RatePod');
+
 var firebase = require('./firebase');
+
+var fs = require('fs');
 
 var self = module.exports = {
     /**
@@ -43,7 +50,7 @@ var self = module.exports = {
                 var list = objects.val();
                 var res = [];
                 for (key in list) {
-                    res[res.length] = self._createTrack(key,list[key]);
+                    res[res.length] = self._createTrack(key, list[key]);
                 }
                 resolve(res);
             });
@@ -52,7 +59,53 @@ var self = module.exports = {
 
 
     _createTrack(key, info) {
-        var obj = new Track(key, info['name'], info['pauseDuration'], info['isForEveryone'], info['difficulty'], info['idUser'], info['positions'], info['pods'], info['pois'], info['typeTrackID']);
+        var positions = [];
+        for (var i = 0; i < info['positions'].length; i++) {
+            positions.push(self._createPosition(info['positions'][i]));
+        }
+
+        var pods = [];
+        if (info['pods']) {
+            for (var i = 0; i < info['pods'].length; i++) {
+                pods.push(self._createPOD(info['pods'][i]));
+            }
+        }
+
+        var pois = [];
+        if (info['pois']) {
+            for (var i = 0; i < info['pois'].length; i++) {
+                pois.push(self._createPOI(info['pois'][i]));
+            }
+        }
+
+
+        var obj = new Track(key, info['name'], info['distance'], info['pauseDuration'], info['forEveryone'], info['difficulty'], info['idUser'], positions, pods, pois, info['typeTrackID']);
         return obj;
+    },
+    _createPosition(info) {
+        var obj = new Position(info['latitude'], info['longitude'], info['altitude'], info['time']);
+        return obj;
+    },
+    _createPOD(info) {
+        var position = self._createPosition(info['position']);
+        var ratepods = [];
+        console.log(info);
+        for (var i = 0; i < info['categoriesID'].length; i++) {
+            ratepods.push(self._createRatePOD(info['categoriesID'][i]));
+        }
+
+        //fs.writeFileSync('./test.png',info['picture'],{encoding: 'base64'});
+
+        var obj = new POD(info['name'], info['description'], info['picture'], position, ratepods);
+        return obj;
+    },
+    _createRatePOD(info) {
+        var obj = new RatePOD(info['podCatID'], info['rate']);
+        return obj;
+    },
+    _createPOI(info) {
+        var position = self._createPosition(info['position']);
+        var obj = new POI(info['name'], info['description'], info['picture'], position, info['categoriesID']);
     }
+
 }

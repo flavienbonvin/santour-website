@@ -1,5 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  ul.collapsible(data-collapsible='accordion')
+    each track in tracks
+      li
+        .collapsible-header
+          span.right(onclick='deleteTrack("'+track.id+'",event)')
+            i.material-icons delete
+          span= track.name
+        .collapsible-body
+          div Distance du parcours : #{Math.round(track.distance)}m.
+          div Difficulté : #{track.difficulty}
+          if track.isForEveryone
+            div Pour tout le monde : oui
+          else
+            div Pour tout le monde : non

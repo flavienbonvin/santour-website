@@ -2,6 +2,14 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    link(rel='stylesheet', href='/css/materialize.min.css')
+    link(rel='stylesheet', href='/css/style.css')
+    script(src="https://code.jquery.com/jquery-3.2.1.min.js")
+    script(src="/js/materialize.min.js")
+    script(src="/js/default.js")
   body
+    nav
+      .nav-wrapper
+        a.brand-logo.center(href='#') SanTour
     block content
