@@ -1,0 +1,71 @@
+doctype html
+html
+    head
+        title= title
+        link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+        link(rel='stylesheet', href='/css/materialize.min.css')
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel='stylesheet', href='/css/administration.css')
+        script(src="https://code.jquery.com/jquery-3.2.1.min.js")
+        script(src="/js/materialize.min.js")
+    body
+        header
+            ul.side-nav.fixed.teal.lighten-2y#mobile-demo
+                li
+                    div.logo
+
+                li
+                    a(href="/admin/tracks").white-text Tracks
+                        i.material-icons.white-text map
+                li
+                    a(href="/admin/users").white-text Users
+                        i.material-icons.white-text group
+                li
+                    a(href="/admin/categories").white-text Categories
+                        i.material-icons.white-text star_half
+                li
+                    a(href="/admin/difficulties").white-text Difficulties
+                        i.material-icons.white-text terrain
+                li
+                    a(href="/admin/settings").white-text Settings
+                        i.material-icons.white-text settings
+                li
+                    a(href="/login/logout").red-text Logout
+                        i.material-icons.red-text power_settings_new
+
+        nav.grey.lighten-5
+            div.nav-wrapper
+                a(href="#", data-activates="mobile-demo").button-collapse
+                    i.material-icons.black-text menu
+                ul.right
+                    li
+                        a.black-text.dropdown-button(href="#!")&attributes({'data-activates': 'language-dropdown'}) Language
+                            i.material-icons.left language
+                            i.material-icons.right arrow_drop_down
+                ul.right
+                    li
+                        a.black-text.dropdown-button(href="#!")&attributes({'data-activates':'user-dropdown'})
+                            img.circle.user(src="../../images/user.png")
+                            | Admin
+                            i.material-icons.right arrow_drop_down
+
+        ul(id="language-dropdown").dropdown-content
+            li
+                a EN
+            li
+                a FR
+            li
+                a DE
+
+        ul(id="user-dropdown").dropdown-content
+            li
+                a admin
+                    i.material-icons person
+            li
+                a.red-text logout
+                    i.material-icons.red-text power_settings_new
+        main
+            block content
+
+        script(src='/js/admin/components.js', type="text/javascript")
+
