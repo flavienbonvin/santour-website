@@ -1,6 +1,9 @@
 {
 
   "TRACKS" : "Spuren",
+  "LOGIN" : "Anmeldung",
+  "USERNAME": "Nutzername",
+  "PASSWORD": "Passwort",
 
   "USERS" : "Benutzer",
   "ID" : "Id",

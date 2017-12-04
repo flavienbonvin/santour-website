@@ -1,0 +1,9 @@
+.full-screen{
+    min-height: 100vh;
+}
+.padding-center{
+    padding: 2em;
+}
+.margin-auto{
+    margin:0 auto;
+}

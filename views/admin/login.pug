@@ -1,0 +1,40 @@
+extends layout_login
+
+block content
+    div.full-screen.teal.valign-wrapper
+        div.container
+            div.row
+                div.right
+                    a.black-text.dropdown-button(href="#!")&attributes({'data-activates': 'language-dropdown'}) Language
+                        i.material-icons.left language
+                        i.material-icons.right arrow_drop_down
+
+                    ul(id="language-dropdown").dropdown-content
+                        li
+                            a(href="?clang=en") EN
+                        li
+                            a(href="?clang=fr") FR
+                        li
+                            a(href="?clang=de") DE
+
+            div.row.valign-wrapper
+                div.white.padding-center.margin-auto
+                    img(src='images/logo.png')
+                    h4 #{translation.LOGIN}
+                    form(action='/login', method='POST')
+                        div.input-field
+                            i.material-icons.prefix person
+                            input#username(type='text', name='username')
+                            label(for='username') #{translation.USERNAME}
+                        div.input-field
+                            i.material-icons.prefix lock
+                            input#password(type='password', name='password')
+                            label(for='password') #{translation.PASSWORD}
+                        div
+                             button.btn.right(type='submit', name='action') #{translation.LOGIN}
+
+
+
+
+
+

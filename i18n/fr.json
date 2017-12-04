@@ -1,6 +1,9 @@
 {
 
   "TRACKS" : "Parcours",
+  "LOGIN" : "Se connecter",
+  "USERNAME": "Pseudo",
+  "PASSWORD": "Mot de passe",
 
   "USERS" : "Utilisateurs",
   "ID" : "Id",

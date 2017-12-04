@@ -1,6 +1,9 @@
 {
 
   "TRACKS" : "Tracks",
+  "LOGIN" : "Login",
+  "USERNAME": "Username",
+  "PASSWORD": "Password",
 
   "USERS" : "Users",
   "ID" : "Id",
