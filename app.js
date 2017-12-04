@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(i18n({
     translationsPath: path.join(__dirname, 'i18n'), // <--- use here. Specify translations files path.
-    siteLangs: ["fr","en", "de"],
+    siteLangs: ["en","fr", "de"],
     textsVarName: 'translation',
 }));
 
