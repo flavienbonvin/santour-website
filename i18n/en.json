@@ -5,11 +5,20 @@
   "USERNAME": "Username",
   "PASSWORD": "Password",
 
+  "CATEGORIES": "Categories",
+  "NAME": "Name",
+  "DIFFICULTIES": "Difficulties",
+  "ADD": "Add",
+
+
+
   "USERS" : "Users",
   "ID" : "Id",
   "PSEUDO" : "Pseudo",
   "EMAIL" : "Email",
   "TYPE" : "Type",
   "DELETE" : "Delete"
+
+
 
 }
