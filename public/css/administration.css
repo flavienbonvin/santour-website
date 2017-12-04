@@ -1,0 +1,43 @@
+/* CONTENT */
+main, footer
+{
+    padding-left: 300px;
+}
+
+/* SIDE NAV MENU */
+.side-nav .logo {
+    background-image: url("../images/logo.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 184px;
+}
+
+/*NAV BAR */
+.nav-wrapper .user {
+    width: 3.5em;
+    vertical-align: middle;
+    margin-right: 1em;
+}
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 992px) {
+    main, footer {
+        padding-left: 0;
+    }
+
+
+}
+
+@media only screen and (min-width: 993px) {
+    .container {
+        width: 70%;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .container {
+        width: 85%;
+    }
+}
