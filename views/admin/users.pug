@@ -2,4 +2,26 @@ extends layout_admin
 
 block content
     div.container
-        h2 Users
+        h2 #{translation.USERS}
+        table#tableUsers.highlight
+            thead
+                tr
+                    th #{translation.ID}
+                    th #{translation.PSEUDO}
+                    th #{translation.EMAIL}
+                    th #{translation.TYPE}
+                    th
+            tbody
+                each user in users
+                    tr(onclick='getAll('+user.id+')')
+                        .user
+                            td
+                                value=user.id
+                            td
+                                value=user.pseudo
+                            td
+                                value=user.email
+                            td
+                                value=user.typeUser
+                            td
+                                button.right.btn.waves-effect.waves-light(onclick='delete(' + user.id + ')') #{translation.DELETE}

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var trackDB = require('../db/TrackDB');
+var userDB = require('../db/UserDB');
 
 /* GET tracks page. */
 router.get('/', function(req, res, next) {
@@ -15,8 +16,13 @@ router.get('/tracks', function(req, res, next) {
 
 });
 
+
+/*GET list of users*/
 router.get('/users', function(req, res, next) {
-    res.render('admin/users');
+    userDB.getAll().then(function(list) {
+        console.log(list+"sandy");
+        res.render('admin/users', { title: 'Express', users : list });
+    })
 
 });
 

@@ -1,5 +1,12 @@
 {
 
-  "TRACKS" : "Parcours"
+  "TRACKS" : "Parcours",
+
+  "USERS" : "Utilisateurs",
+  "ID" : "Id",
+  "PSEUDO" : "Pseudo",
+  "EMAIL" : "Email",
+  "TYPE" : "Type",
+  "DELETE" : "Supprimer"
 
 }

@@ -1,5 +1,12 @@
 {
 
-  "TRACKS" : "Spuren"
+  "TRACKS" : "Spuren",
+
+  "USERS" : "Benutzer",
+  "ID" : "Id",
+  "PSEUDO" : "Spitzname",
+  "EMAIL" : "Email",
+  "TYPE" : "Art",
+  "DELETE" : "Löschen"
 
 }
