@@ -49,6 +49,15 @@ var self = module.exports = {
             });
         })
     },
+    getById(id){
+        return new Promise((resolve, reject) => {
+            firebase.ref('/category_poi/'+id).once('value').then(function (objects) {
+                var obj = objects.val();
+                var res  = self._createCategoryPOI(id, obj);
+                resolve(res);
+            });
+        })
+    },
 
 
     _createCategoryPOI(key, info) {
