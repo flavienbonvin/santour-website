@@ -9,7 +9,6 @@ var bodyParser = require('body-parser');
 var i18n=require("i18n-express");
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 var admin = require('./routes/admin');
 var login = require('./routes/login');
 
@@ -45,7 +44,6 @@ app.use(i18n({
 }));
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/admin', admin);
 app.use('/login', login);
 
