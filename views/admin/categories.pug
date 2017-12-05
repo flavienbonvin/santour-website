@@ -2,4 +2,26 @@ extends layout_admin
 
 block content
     div.container
-        h2 Categories
+        h2 #{translation.CATEGORIES}
+        table#tableCategories.highlight
+            thead
+                tr
+                    th #{translation.NAME}
+
+            tbody
+                tr
+                    td.tdEditable(colspan='2')
+                        form(method='post')
+                        .input-field.inline
+                            input#name.validate(maxlength='50', type='text', name='name', required='')
+                            label(for='name') #{translation.NAME}
+                        button.right.btn.waves-effect.waves-light(type='submit', name='submit')
+                            | #{translation.ADD}
+                    td
+                each categorie in categories
+                    tr(onclick='getAll(' + categorie.id + ')')
+                        .categorie
+                            td
+                                value=categorie.name
+                            td
+                                button.right.btn.waves-effect.waves-light(onclick='delete(' + categorie.id + ')') #{translation.DELETE}

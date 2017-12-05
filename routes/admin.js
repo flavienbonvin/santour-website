@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var trackDB = require('../db/TrackDB');
 var userDB = require('../db/UserDB');
+var categoryPOIDB = require('../db/CategoryPOIDB');
+var categoryPODDB = require('../db/CategoryPODDB');
 
 /* GET tracks page. */
 router.get('/', function(req, res, next) {
@@ -27,12 +29,17 @@ router.get('/users', function(req, res, next) {
 });
 
 router.get('/categories', function(req, res, next) {
-    res.render('admin/categories');
+    categoryPOIDB.getAll().then(function (list) {
+        res.render('admin/categories', {title: 'Express', categories : list});
+    })
+
 
 });
 
 router.get('/difficulties', function(req, res, next) {
-    res.render('admin/difficulties');
+    categoryPODDB.getAll().then(function (list) {
+        res.render('admin/difficulties', {title: 'Express', difficulties : list});
+    })
 
 });
 

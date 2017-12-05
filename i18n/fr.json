@@ -5,6 +5,12 @@
   "USERNAME": "Pseudo",
   "PASSWORD": "Mot de passe",
 
+  "CATEGORIES": "Categories",
+  "NAME": "Nom",
+  "DIFFICULTIES": "Difficultés",
+  "ADD": "Ajouter",
+
+
   "USERS" : "Utilisateurs",
   "ID" : "Id",
   "PSEUDO" : "Pseudo",

@@ -5,6 +5,11 @@
   "USERNAME": "Nutzername",
   "PASSWORD": "Passwort",
 
+  "CATEGORIES": "Kategorien",
+  "NAME": "Name",
+  "DIFFICULTIES": "Schwierigkeiten",
+  "ADD": "hinzufügen",
+
   "USERS" : "Benutzer",
   "ID" : "Id",
   "PSEUDO" : "Spitzname",
