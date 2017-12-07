@@ -1,7 +1,7 @@
-var TrackDB = require('./db/TrackDB');
+var TrackDB = require('./db/UserDB');
 var util = require('util');
 
-TrackDB.getAll().then((list) =>{
+TrackDB.getByPseudo('max').then((user) =>{
     
-    console.log(util.inspect(list, false, null))
+    console.log(util.inspect(user, false, null))
 })

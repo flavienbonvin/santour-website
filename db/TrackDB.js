@@ -56,6 +56,15 @@ var self = module.exports = {
             });
         })
     },
+    getById(id){
+        return new Promise((resolve, reject) => {
+            firebase.ref('/tracks/'+id).once('value').then(function (objects) {
+                var obj = objects.val();
+                var res  = self._createTrack(id, obj);
+                resolve(res);
+            });
+        })
+    },
 
 
     _createTrack(key, info) {
