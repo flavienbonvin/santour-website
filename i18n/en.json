@@ -10,6 +10,14 @@
   "DIFFICULTIES": "Difficulties",
   "ADD": "Add",
 
+  "LANGUAGE": "Language",
+  "FRENCH": "French",
+  "ENGLISH": "English",
+  "GERMAN": "German",
+  "DISTANCEMIN": "Minimum distance",
+  "DISTANCEMAX": "Maximum distance",
+  "EXPORTDATA": "Export database",
+
 
 
   "USERS" : "Users",

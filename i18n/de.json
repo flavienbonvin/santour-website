@@ -10,6 +10,14 @@
   "DIFFICULTIES": "Schwierigkeiten",
   "ADD": "hinzufügen",
 
+  "LANGUAGE": "Sprache",
+  "FRENCH": "Französisch",
+  "ENGLISH": "Englisch",
+  "GERMAN": "Deutsche",
+  "DISTANCEMIN": "Minimum Entfernung",
+  "DISTANCEMAX": "Maximale Entfernung",
+  "EXPORTDATA": "Datenbank exportieren",
+
   "USERS" : "Benutzer",
   "ID" : "Id",
   "PSEUDO" : "Spitzname",

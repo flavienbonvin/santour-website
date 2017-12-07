@@ -10,6 +10,13 @@
   "DIFFICULTIES": "Difficultés",
   "ADD": "Ajouter",
 
+  "LANGUAGE": "Langue",
+  "FRENCH": "Français",
+  "ENGLISH": "Anglais",
+  "GERMAN": "Allemand",
+  "DISTANCEMIN": "Distance minimale",
+  "DISTANCEMAX": "Distance maximale",
+  "EXPORTDATA": "Exporter la base de donnée",
 
   "USERS" : "Utilisateurs",
   "ID" : "Id",
