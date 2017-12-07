@@ -8,7 +8,6 @@ var bodyParser = require('body-parser');
 
 var i18n=require("i18n-express");
 
-var index = require('./routes/index');
 var admin = require('./routes/admin');
 var login = require('./routes/login');
 
@@ -43,7 +42,6 @@ app.use(i18n({
     textsVarName: 'translation',
 }));
 
-app.use('/', index);
 app.use('/admin', admin);
 app.use('/login', login);
 
