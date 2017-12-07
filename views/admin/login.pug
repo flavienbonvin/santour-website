@@ -18,8 +18,9 @@ block content
                             a(href="?clang=de") DE
 
             div.row.valign-wrapper
-                div.white.padding-center.margin-auto
-                    img(src='images/logo.png')
+                div.padding-center.margin-auto.card-panel
+                    div.login-logo
+                        include ../../public/images/logo.svg
                     h4 #{translation.LOGIN}
                     form(action='/login', method='POST')
                         div.input-field

@@ -4,12 +4,10 @@ main, footer {
 }
 
 /* SIDE NAV MENU */
-.side-nav .logo {
-    background-image: url("../images/logo.png");
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+
+.admin-logo svg {
     height: 184px;
+    width: 300px;
 }
 
 /*NAV BAR */
