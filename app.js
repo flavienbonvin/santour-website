@@ -42,8 +42,8 @@ app.use(i18n({
     textsVarName: 'translation',
 }));
 
+app.use('/', login)
 app.use('/admin', admin);
-app.use('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

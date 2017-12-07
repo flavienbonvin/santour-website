@@ -69,8 +69,11 @@ var self = module.exports = {
 
     _createTrack(key, info) {
         var positions = [];
-        for (var i = 0; i < info['positions'].length; i++) {
-            positions.push(self._createPosition(info['positions'][i]));
+        if(info['positions'])
+        {
+            for (var i = 0; i < info['positions'].length; i++) {
+                positions.push(self._createPosition(info['positions'][i]));
+            }
         }
 
         var pods = [];
