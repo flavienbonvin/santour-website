@@ -3,3 +3,39 @@ extends layout_admin
 block content
     div.container
         h2 Settings
+        table#tableSettings.highlight
+            tbody
+                tr
+                    td
+                        h5 #{translation.LANGUAGE}
+                    td
+                        .input-field.col.s9
+                            select
+                                option(selected='')
+                                |
+                                option(value='FR') #{translation.FRENCH}
+                                |
+                                option(value='EN') #{translation.ENGLISH}
+                                |
+                                option(value='DE') #{translation.GERMAN}
+                tr
+                    td
+                        h5 #{translation.DISTANCEMIN}
+                    td
+                        .col.s9
+                            input#myMinNumber(type='number', value='8')
+                tr
+                    td
+                        h5 #{translation.DISTANCEMAX}
+                    td
+                        .col.s9
+                            input#myMaxNumber(type='number', value='800')
+                tr
+                    td
+                        h5 #{translation.EXPORTDATA}
+                    td
+                        .input-field.col.s9
+                            i.material-icons.left play_for_work
+
+
+
