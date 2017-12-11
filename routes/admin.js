@@ -18,6 +18,14 @@ router.get('/tracks', function(req, res, next) {
 
 });
 
+router.get('/tracks/track=:id', function(req, res, next) {
+    var id = req.params.id;
+    console.log("REQUEST GET TRACK DETAILS OF :"+id);
+    res.render('admin/track');
+
+});
+
+
 
 /*GET list of users*/
 router.get('/users', function(req, res, next) {

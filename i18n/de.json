@@ -15,6 +15,8 @@
   "PSEUDO" : "Spitzname",
   "EMAIL" : "Email",
   "TYPE" : "Art",
-  "DELETE" : "Löschen"
+  "DELETE" : "Löschen",
+
+  "DISTANCE" : "Entfernung"
 
 }

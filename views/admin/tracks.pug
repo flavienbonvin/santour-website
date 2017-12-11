@@ -3,17 +3,34 @@ extends layout_admin
 block content
     div.container
         h2 #{translation.TRACKS}
-        ul.collapsible(data-collapsible='accordion')
-            each track in tracks
-                li
-                    .collapsible-header
-                        span.right(onclick='deleteTrack("'+track.id+'",event)')
-                            i.material-icons delete
-                        span= track.name
-                    .collapsible-body
-                        div Distance du parcours : #{Math.round(track.distance)}m.
-                        div Difficulté : #{track.difficulty}
-                        if track.isForEveryone
-                            div Pour tout le monde : oui
-                        else
-                            div Pour tout le monde : non
+        table.highlight
+            thead
+                tr
+                    th #{translation.ID}
+                    th #{translation.NAME}
+                    th #{translation.DISTANCE}
+                    th
+            tbody
+                each track in tracks
+                    tr(onclick='getDetails("'+track.id+'")')
+                        td= track.id
+                        td= track.name
+                        td #{Math.round(track.distance)}m
+                        td
+                            button.right.btn.waves-effect.waves-light(onclick='deleteTrack("'+track.id+'",event)') #{translation.DELETE}
+
+
+        //ul.collapsible(data-collapsible='accordion')
+        //    each track in tracks
+        //        li
+        //            .collapsible-header
+        //                span.right(onclick='deleteTrack("'+track.id+'",event)')
+        //                    i.material-icons delete
+        //                span= track.name
+        //            .collapsible-body
+        //                div Distance du parcours : #{Math.round(track.distance)}m.
+        //                div Difficulté : #{track.difficulty}
+        //                if track.isForEveryone
+        //                    div Pour tout le monde : oui
+        //                else
+        //                    div Pour tout le monde : non

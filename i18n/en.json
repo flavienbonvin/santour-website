@@ -10,14 +10,14 @@
   "DIFFICULTIES": "Difficulties",
   "ADD": "Add",
 
-
-
   "USERS" : "Users",
   "ID" : "Id",
   "PSEUDO" : "Pseudo",
   "EMAIL" : "Email",
   "TYPE" : "Type",
-  "DELETE" : "Delete"
+  "DELETE" : "Delete",
+
+  "DISTANCE" : "Distance"
 
 
 

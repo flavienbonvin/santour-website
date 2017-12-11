@@ -10,12 +10,14 @@
   "DIFFICULTIES": "Difficultés",
   "ADD": "Ajouter",
 
-
   "USERS" : "Utilisateurs",
   "ID" : "Id",
   "PSEUDO" : "Pseudo",
   "EMAIL" : "Email",
   "TYPE" : "Type",
-  "DELETE" : "Supprimer"
+  "DELETE" : "Supprimer",
+
+  "DISTANCE" : "Distance"
+
 
 }
