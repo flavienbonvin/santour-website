@@ -21,7 +21,10 @@ router.get('/tracks', function(req, res, next) {
 router.get('/tracks/track=:id', function(req, res, next) {
     var id = req.params.id;
     console.log("REQUEST GET TRACK DETAILS OF :"+id);
-    res.render('admin/track');
+    trackDB.getById(id).then(function(track) {
+        res.render('admin/track', { title: 'Express', track : track });
+    })
+
 
 });
 

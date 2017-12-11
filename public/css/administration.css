@@ -1,4 +1,8 @@
 /* CONTENT */
+body
+{
+    background-color: #fcfcfc;
+}
 main, footer {
     padding-left: 300px;
 }
@@ -15,6 +19,11 @@ main, footer {
     width: 3.5em;
     vertical-align: middle;
     margin-right: 1em;
+}
+
+/*TRACK DETAILS*/
+.tabs{
+
 }
 
 /* RESPONSIVE */

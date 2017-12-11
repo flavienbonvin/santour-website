@@ -3,3 +3,73 @@ extends layout_admin
 block content
     div.container
         h2 Track details
+        div.row.card-panel
+            div.col.s12
+                ul.tabs.tabs-fixed-width
+                    li.tab.col.s3
+                        a.active(href="#track-details-tab1") #{translation.TRACKDETAILS}
+                    li.tab.col.s3
+                        a(href="#track-details-tab2") #{translation.POSITIONS}
+                    li.tab.col.s3
+                        a(href="#track-details-tab3") #{translation.POISLIST}
+                    li.tab.col.s3
+                        a(href="#track-details-tab4") #{translation.PODSLIST}
+
+            div#track-details-tab1.col.s12
+                table.highlight
+                    tbody
+                        tr
+                            th #{translation.ID}
+                            td= track.id
+                        tr
+                            th #{translation.NAME}
+                            td= track.name
+                        tr
+                            th #{translation.DISTANCE}
+                            td #{Math.round(track.distance)}m
+                        tr
+                            th #{translation.DIFFICULTY}
+                            td= track.difficulty
+                        tr
+                            th #{translation.ACCESSIBILITY}
+                            td= track.isForEveryone
+                        tr
+                            th #{translation.PAUSEDURATION}
+                            td= track.pauseDuration
+
+
+            div#track-details-tab2.col.s12
+                table.highlight
+                    thead
+                        tr
+                            th #{translation.ID}
+                            th #{translation.ALTITUDE}
+                            th #{translation.LATITUDE}
+                            th #{translation.LONGITUDE}
+                            th #{translation.TIME}
+                    tbody
+                        each position, index in track.positions
+                            tr
+                                td= index
+                                td= position.altitude
+                                td= position.latitude
+                                td= position.longitude
+                                td= position.time
+            div#track-details-tab3.col.s12 #{translation.POISLIST}
+
+            div#track-details-tab4.col.s12
+                table.highlight
+                    thead
+                        tr
+                            th #{translation.ID}
+                            th #{translation.ALTITUDE}
+                            th #{translation.LATITUDE}
+                            th #{translation.LONGITUDE}
+                            th #{translation.TIME}
+                    tbody
+                        each pod, index in track.pods
+                            tr
+                                td= index
+                                td= pod.description
+                                td
+                                    img(src="data:image/jpeg;base64,"+pod.picture)

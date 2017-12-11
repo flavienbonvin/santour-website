@@ -27,7 +27,19 @@
   "TYPE" : "Type",
   "DELETE" : "Delete",
 
-  "DISTANCE" : "Distance"
+  "DISTANCE" : "Distance",
+  "DIFFICULTY": "Difficulty",
+  "ACCESSIBILITY": "Accessibility",
+  "PAUSEDURATION": "Break time",
+  "ALTITUDE": "Altitude",
+  "LATITUDE": "Latitude",
+  "LONGITUDE": "Longitude",
+  "TIME": "Time",
+
+  "TRACKDETAILS": "Detailed track",
+  "POSITIONS" : "Positions",
+  "POISLIST": "POIs List",
+  "PODSLIST": "PODs List"
 
 
 

@@ -25,7 +25,19 @@
   "TYPE" : "Type",
   "DELETE" : "Supprimer",
 
-  "DISTANCE" : "Distance"
+  "DISTANCE" : "Distance",
+  "DIFFICULTY" : "Difficulté",
+  "ACCESSIBILITY" : "Accessibilité",
+  "PAUSEDURATION" : "Durée de pause",
+  "ALTITUDE" : "Altitude",
+  "LATITUDE" : "Latitude",
+  "LONGITUDE" : "Longitude",
+  "TIME" : "Temps",
+
+  "TRACKDETAILS" : "Parcours détaillé",
+  "POSITIONS" : "Positions",
+  "POISLIST" : "Liste des POIs",
+  "PODSLIST" : "Liste des PODs"
 
 
 }

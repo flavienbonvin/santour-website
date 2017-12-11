@@ -1,3 +1,3 @@
 function getDetails(id) {
-    $.get( "tracks/track="+id);
+    window.location = 'tracks/track='+id;
 }
