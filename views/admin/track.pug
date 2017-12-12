@@ -3,9 +3,9 @@ extends layout_admin
 block content
     div.container
         h2 Track details
-        div.row.card-panel
+        div.row.tab-of-contents
             div.col.s12
-                ul.tabs.tabs-fixed-width
+                ul.tabs.tabs-fixed-width.z-depth-1
                     li.tab.col.s3
                         a.active(href="#track-details-tab1") #{translation.TRACKDETAILS}
                     li.tab.col.s3
@@ -14,62 +14,98 @@ block content
                         a(href="#track-details-tab3") #{translation.POISLIST}
                     li.tab.col.s3
                         a(href="#track-details-tab4") #{translation.PODSLIST}
-
-            div#track-details-tab1.col.s12
-                table.highlight
-                    tbody
-                        tr
-                            th #{translation.ID}
-                            td= track.id
-                        tr
-                            th #{translation.NAME}
-                            td= track.name
-                        tr
-                            th #{translation.DISTANCE}
-                            td #{Math.round(track.distance)}m
-                        tr
-                            th #{translation.DIFFICULTY}
-                            td= track.difficulty
-                        tr
-                            th #{translation.ACCESSIBILITY}
-                            td= track.isForEveryone
-                        tr
-                            th #{translation.PAUSEDURATION}
-                            td= track.pauseDuration
-
-
-            div#track-details-tab2.col.s12
-                table.highlight
-                    thead
-                        tr
-                            th #{translation.ID}
-                            th #{translation.ALTITUDE}
-                            th #{translation.LATITUDE}
-                            th #{translation.LONGITUDE}
-                            th #{translation.TIME}
-                    tbody
-                        each position, index in track.positions
+            div.col.s12
+                div#track-details-tab1.col.s12.card-panel
+                    table.highlight
+                        tbody
                             tr
-                                td= index
-                                td= position.altitude
-                                td= position.latitude
-                                td= position.longitude
-                                td= position.time
-            div#track-details-tab3.col.s12 #{translation.POISLIST}
-
-            div#track-details-tab4.col.s12
-                table.highlight
-                    thead
-                        tr
-                            th #{translation.ID}
-                            th #{translation.ALTITUDE}
-                            th #{translation.LATITUDE}
-                            th #{translation.LONGITUDE}
-                            th #{translation.TIME}
-                    tbody
-                        each pod, index in track.pods
+                                th #{translation.ID}
+                                td= track.id
                             tr
-                                td= index
-                                td= pod.description
-                                td
-                                    img(src="data:image/jpeg;base64,"+pod.picture)
+                                th #{translation.NAME}
+                                td= track.name
+                            tr
+                                th #{translation.DISTANCE}
+                                td #{Math.round(track.distance)}m
+                            tr
+                                th #{translation.DIFFICULTY}
+                                td= track.difficulty
+                            tr
+                                th #{translation.ACCESSIBILITY}
+                                td= track.isForEveryone
+                            tr
+                                th #{translation.PAUSEDURATION}
+                                td= track.pauseDuration
+
+
+                div#track-details-tab2.col.s12.card-panel
+                    table.highlight
+                        thead
+                            tr
+                                th #{translation.ID}
+                                th #{translation.ALTITUDE}
+                                th #{translation.LATITUDE}
+                                th #{translation.LONGITUDE}
+                                th #{translation.TIME}
+                        tbody
+                            each position, index in track.positions
+                                tr
+                                    td= index
+                                    td= position.altitude
+                                    td= position.latitude
+                                    td= position.longitude
+                                    td= position.time
+                div#track-details-tab3.col.s12.card-panel
+                    if(track.pois.length)
+                        table.highlight
+                            thead
+                                tr
+                                    th #{translation.ID}
+                                    th #{translation.PICTURE}
+                                    th #{translation.NAME}
+                                    th #{translation.DESCRIPTION}
+                                    th #{translation.ALTITUDE}
+                                    th #{translation.LATITUDE}
+                                    th #{translation.LONGITUDE}
+                                    th #{translation.TIME}
+                            tbody
+                                each poi, index in track.pois
+                                    tr
+                                        td= index
+                                        td
+                                            img.po-img(src='https://firebasestorage.googleapis.com/v0/b/santour-c0a51.appspot.com/o/' + pod.picture.replace('/', '%2F') + '?alt=media')
+                                        td= poi.name
+                                        td= poi.description
+                                        td= poi.position.altitude
+                                        td= poi.position.latitude
+                                        td= poi.position.longitude
+                                        td= poi.position.time
+                    else
+                        div #{translation.NOPOIS}
+                div#track-details-tab4.col.s12.card-panel
+                    if(track.pods.length)
+                        table.highlight
+                            thead
+                                tr
+                                    th #{translation.ID}
+                                    th #{translation.PICTURE}
+                                    th #{translation.NAME}
+                                    th #{translation.DESCRIPTION}
+                                    th #{translation.ALTITUDE}
+                                    th #{translation.LATITUDE}
+                                    th #{translation.LONGITUDE}
+                                    th #{translation.TIME}
+                            tbody
+                                each pod, index in track.pods
+                                    tr
+                                        td= index
+                                        td
+                                            img.po-img(src='https://firebasestorage.googleapis.com/v0/b/santour-c0a51.appspot.com/o/'+pod.picture.replace('/','%2F')+'?alt=media')
+                                        td= pod.name
+                                        td= pod.description
+                                        td= pod.position.altitude
+                                        td= pod.position.latitude
+                                        td= pod.position.longitude
+                                        td= pod.position.time
+                    else
+                        div #{translation.NOPODS}

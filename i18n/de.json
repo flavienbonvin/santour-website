@@ -33,6 +33,10 @@
   "LATITUDE": "Breite",
   "LONGITUDE": "Länge",
   "TIME": "Zeit",
+  "PICTURE": "Bild",
+  "DESCRIPTION": "Beschreibung",
+  "NOPOIS": "0 POI für diesen Track gefunden",
+  "NOPODS": "0 POD für diesen Track gefunden",
 
   "TRACKDETAILS": "Detaillierter Spur",
   "POSITIONS" : "Positionen",

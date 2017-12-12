@@ -33,6 +33,10 @@
   "LATITUDE" : "Latitude",
   "LONGITUDE" : "Longitude",
   "TIME" : "Temps",
+  "PICTURE" : "Image",
+  "DESCRIPTION" : "Description",
+  "NOPOIS" : "0 POI found for this track",
+  "NOPODS" : "0 POD found for this track",
 
   "TRACKDETAILS" : "Parcours détaillé",
   "POSITIONS" : "Positions",
