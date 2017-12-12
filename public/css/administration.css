@@ -59,3 +59,7 @@ main, footer {
 .divExportData {
     margin-top: 20px;
 }
+
+#bodyTracks td a {
+    margin: 0 10px;
+}

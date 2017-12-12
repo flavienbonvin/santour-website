@@ -10,14 +10,18 @@ block content
                     th #{translation.NAME}
                     th #{translation.DISTANCE}
                     th
-            tbody
+                    th
+            tbody#bodyTracks
                 each track in tracks
                     tr(onclick='getDetails("'+track.id+'")')
                         td= track.id
                         td= track.name
-                        td #{Math.round(track.distance)}m
+                        td #{Math.round(track.distance)} m
                         td
-                            button.right.btn.waves-effect.waves-light(onclick='deleteTrack("'+track.id+'",event)') #{translation.DELETE}
+                            a.right.red-text
+                                i.material-icons delete
+                            a.right.teal-text
+                                i.material-icons file_download
 
 
         //ul.collapsible(data-collapsible='accordion')
