@@ -45,6 +45,25 @@ main, footer {
     width: 8em;
 }
 
+/* USER DETAILS */
+#newpassword-input{
+    display: none;
+}
+
+#confirmpassword-input{
+    display: none;
+}
+
+#user-edit-off-button
+{
+    display: none;
+}
+
+#user-edit-save-button
+{
+    display: none;
+}
+
 /* RESPONSIVE */
 
 @media only screen and (max-width: 992px) {
@@ -81,4 +100,14 @@ main, footer {
 
 #bodyTracks td a {
     margin: 0 10px;
+}
+
+#personicon {
+    padding-right: 20px;
+    font-size: 37px;
+}
+
+#fileicon {
+    padding-right: 20px;
+    font-size: 35px;
 }

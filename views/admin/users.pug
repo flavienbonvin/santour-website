@@ -2,23 +2,24 @@ extends layout_admin
 
 block content
     div.container
+        a.waves-effect.waves-light.btn.right(onclick='newUserMode()')
+            i.material-icons.right.white-text#personicon person_add
+        a.waves-effect.waves-light.btn.right(onclick='')
+            i.material-icons.right.white-text#fileicon file_download
         h2 #{translation.USERS}
         table#tableUsers.highlight
             thead
                 tr
                     th #{translation.ID}
-                    th #{translation.PSEUDO}
                     th #{translation.EMAIL}
                     th #{translation.TYPE}
                     th
             tbody
                 each user in users
-                    tr(onclick='getAll('+user.id+')')
+                    tr(onclick='getUserDetails("'+user.id+'")')
                         .user
                             td
                                 value=user.id
-                            td
-                                value=user.pseudo
                             td
                                 value=user.email
                             td

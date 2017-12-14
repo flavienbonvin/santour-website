@@ -1,0 +1,29 @@
+extends layout_admin
+
+block content
+    div.container
+        h2 #{translation.NEWUSER}
+        div.row
+            form.col.s12
+                div.row
+                    div.input-field.col.s6
+                        i.material-icons.prefix email
+                        input#email.validate(type="email")
+                        label(for="email") #{translation.EMAIL}
+                    div.input-field.col.s6
+                        i.material-icons.prefix group
+                        select#usertype.validate()
+                            option(value="tracker", selected) Tracker
+                            option(value="admin") Admin
+                        label #{translation.TYPE}
+                    div.input-field.col.s6
+                        i.material-icons.prefix lock_outline
+                        input#newpassword.validate(type="password", placeholder="")
+                        label(for="newpassword") #{translation.PASSWORD}
+                    div.input-field.col.s6
+                        i.material-icons.prefix lock_outline
+                        input#confirmpassword.validate(type="password", placeholder="")
+                        label(for="confirmpassword") #{translation.PASSWORD}
+                div.row
+                    button.right.btn.waves-effect.waves-light(type="submit", name="action") #{translation.SAVE}
+                        i.material-icons.right save
