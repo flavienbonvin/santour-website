@@ -35,8 +35,13 @@ router.get('/users', function(req, res, next) {
     userDB.getAll().then(function(list) {
         res.render('admin/users', { title: 'Express', users : list });
     })
-
 });
+
+/*New user*/
+router.get('/users/add', function(req, res, next) {
+    res.render('admin/user_new');
+});
+
 /*GET user by id*/
 router.get('/users/user=:id', function(req, res, next) {
     var id = req.params.id;
@@ -44,8 +49,11 @@ router.get('/users/user=:id', function(req, res, next) {
     userDB.getById(id).then(function(user) {
         res.render('admin/user', { title: 'Express', user : user });
     })
-
 });
+
+
+
+
 
 router.get('/categories', function(req, res, next) {
     categoryPOIDB.getAll().then(function (list) {

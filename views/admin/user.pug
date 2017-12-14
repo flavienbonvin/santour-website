@@ -2,11 +2,11 @@ extends layout_admin
 
 block content
     div.container
-        h2 User details
+        h2 #{translation.USERDETAILS}
         div.row
-            a#user-edit-off-button.waves-effect.waves-light.btn.right(onclick='lockUserEditMode()') Edit
+            a#user-edit-off-button.waves-effect.waves-light.btn.right(onclick='lockUserEditMode()') #{translation.EDIT}
                 i.material-icons.left close
-            a#user-edit-on-button.waves-effect.waves-light.btn.right(onclick='unlockUserEditMode()') Edit
+            a#user-edit-on-button.waves-effect.waves-light.btn.right(onclick='unlockUserEditMode()') #{translation.EDIT}
                 i.material-icons.left mode_edit
             form.col.s12
                 div.row

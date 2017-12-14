@@ -26,6 +26,13 @@
   "EMAIL" : "Email",
   "TYPE" : "Type",
   "DELETE" : "Delete",
+  "USERDETAILS" : "User details",
+  "NEWPASSWORD" : "New password",
+  "CONFIRMPASSWORD" : "Confirm password",
+  "CHOOSETYPE" : "Choose type",
+  "EDIT" : "Edit",
+  "NEWUSER" : "New user",
+  "SAVE" : "Save",
 
   "DISTANCE" : "Distance",
   "DIFFICULTY": "Difficulty",

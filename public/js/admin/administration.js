@@ -21,3 +21,7 @@ function lockUserEditMode() {
     $('#user-edit-save-button').hide();
     $('#user-edit-on-button').show();
 }
+
+function newUserMode(){
+    window.location = 'users/add';
+}
