@@ -8,6 +8,12 @@ var categroyPoi = class CategoryPOI{
         this.id = id;
         this.name = name;
     }
+    convertToFirebase(){
+        return {
+            id: this.id,
+            name : this.name
+        }
+    }
 }
 
 module.exports = categroyPoi;

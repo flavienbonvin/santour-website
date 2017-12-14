@@ -1,5 +1,5 @@
 var CategoryPOI = require('../models/CategoryPOI');
-var firebase = require('./firebase');
+var firebase = require('./firebase').database;
 
 var self = module.exports = {
     /**
@@ -8,9 +8,9 @@ var self = module.exports = {
      */
     add(object) {
         return new Promise((resolve, reject) => {
-            var newPostKey = firebase.database().ref('/category_poi').push().key;
+            var newPostKey = firebase.ref('/category_poi').push().key;
             object.id = newPostKey;
-            firebase.ref('/category_poi').set(object.convertToFirebase()).then(() => {
+            firebase.ref('/category_poi/'+newPostKey).set(object.convertToFirebase()).then(() => {
                 resolve();
             })
         })

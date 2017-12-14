@@ -1,5 +1,5 @@
 var User = require('../models/User');
-var firebase = require('./firebase');
+var firebase = require('./firebase').database;
 
 var self = module.exports = {
     /**

@@ -18,9 +18,9 @@ block content
                         td= track.name
                         td #{Math.round(track.distance)} m
                         td
-                            a.right.black-text
+                            a(href="/admin/tracks/remove/"+track.id).right.black-text
                                 i.material-icons delete
-                            a.right.black-text
+                            a(href="/admin/tracks/exports/"+track.id).right.black-text
                                 i.material-icons file_download
 
 

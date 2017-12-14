@@ -13,11 +13,11 @@ block content
                 tr
                     td.tdEditable(colspan='2')
                         form(method='post')
-                        .input-field.inline
-                            input#name.validate(maxlength='50', type='text', name='name', required='')
-                            label(for='name') #{translation.NAME}
-                        button.right.btn.waves-effect.waves-light(type='submit', name='submit') #{translation.ADD}
-                            i.material-icons.left add
+                            .input-field.inline
+                                input#name.validate(maxlength='50', type='text', name='name', required='')
+                                label(for='name') #{translation.NAME}
+                            button.right.btn.waves-effect.waves-light(type='submit', name='submit') #{translation.ADD}
+                                i.material-icons.left add
                     td
                 each difficulty in difficulties
                     tr(onclick='getAll(' + difficulty.id + ')')
@@ -25,5 +25,5 @@ block content
                             td
                                 value=difficulty.name
                             td
-                                a.right.red-text
+                                a(href="/admin/difficulties/remove/"+difficulty.id).right.red-text
                                     i.material-icons delete

@@ -4,7 +4,7 @@ var POD = require('../models/Pod');
 var POI = require('../models/Poi');
 var RatePOD = require('../models/RatePod');
 
-var firebase = require('./firebase');
+var firebase = require('./firebase').database;
 
 var fs = require('fs');
 
@@ -35,11 +35,11 @@ var self = module.exports = {
     },
     /**
      * 
-     * @param {Track} object 
+     * @param {string} id 
      */
-    delete(object) {
+    delete(id) {
         return new Promise((resolve, reject) => {
-            firebase.ref('/tracks/' + object.id).remove().then(() => {
+            firebase.ref('/tracks/' + id).remove().then(() => {
                 resolve();
             })
         })
@@ -56,6 +56,11 @@ var self = module.exports = {
             });
         })
     },
+    /**
+     * 
+     * @param {string} id
+     * @return {Promise<Track>}
+     */
     getById(id){
         return new Promise((resolve, reject) => {
             firebase.ref('/tracks/'+id).once('value').then(function (objects) {
@@ -85,6 +90,7 @@ var self = module.exports = {
 
         var pois = [];
         if (info['pois']) {
+            
             for (var i = 0; i < info['pois'].length; i++) {
                 pois.push(self._createPOI(info['pois'][i]));
             }
@@ -101,7 +107,6 @@ var self = module.exports = {
     _createPOD(info) {
         var position = self._createPosition(info['position']);
         var ratepods = [];
-        console.log(info);
         for (var i = 0; i < info['categoriesID'].length; i++) {
             ratepods.push(self._createRatePOD(info['categoriesID'][i]));
         }
@@ -118,6 +123,7 @@ var self = module.exports = {
     _createPOI(info) {
         var position = self._createPosition(info['position']);
         var obj = new POI(info['name'], info['description'], info['picture'], position, info['categoriesID']);
+        return obj;
     }
 
 }

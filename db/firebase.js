@@ -8,6 +8,9 @@ var app = firebase.initializeApp({
 });
 
 var database = firebase.database();
+var auth = firebase.auth();
 
-
-module.exports = database;
+module.exports = {
+    database,
+    auth
+}

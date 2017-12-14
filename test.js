@@ -1,7 +1,6 @@
-var TrackDB = require('./db/UserDB');
-var util = require('util');
+var auth = require('./modules/login');
 
-TrackDB.getByPseudo('max').then((user) =>{
-    
-    console.log(util.inspect(user, false, null))
+
+auth.login('maxime.betrisey@hotmail.com','pass$1234').then(() =>{
+
 })
