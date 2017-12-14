@@ -10,14 +10,14 @@ router.get('/', function(req, res, next) {
     res.redirect('/admin/tracks')
 
 });
-
+/*GET list of tracks*/
 router.get('/tracks', function(req, res, next) {
     trackDB.getAll().then(function(list) {
         res.render('admin/tracks', { title: 'Express', tracks : list });
     })
 
 });
-
+/*GET track by id*/
 router.get('/tracks/track=:id', function(req, res, next) {
     var id = req.params.id;
     console.log("REQUEST GET TRACK DETAILS OF :"+id);
@@ -33,8 +33,16 @@ router.get('/tracks/track=:id', function(req, res, next) {
 /*GET list of users*/
 router.get('/users', function(req, res, next) {
     userDB.getAll().then(function(list) {
-        console.log(list+"sandy");
         res.render('admin/users', { title: 'Express', users : list });
+    })
+
+});
+/*GET user by id*/
+router.get('/users/user=:id', function(req, res, next) {
+    var id = req.params.id;
+    console.log("REQUEST GET USER DETAILS OF :"+id);
+    userDB.getById(id).then(function(user) {
+        res.render('admin/user', { title: 'Express', user : user });
     })
 
 });
