@@ -34,7 +34,16 @@ main, footer {
 
 /*TRACK DETAILS*/
 .tabs{
+    background-color: #2a2d3e;
+}
+.tabs .indicator {
+    height: 5px;
+    background-color: #4db6ac;
+}
 
+.tabs a {
+    color: #FFFFFF !important;
+    font-weight: bold;
 }
 
 .tab-of-contents .card-panel{
@@ -43,6 +52,11 @@ main, footer {
 
 .po-img{
     width: 8em;
+}
+
+#track-map-canvas {
+    height: 350px;
+    width: 100%;
 }
 
 /* USER DETAILS */

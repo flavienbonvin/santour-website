@@ -3,6 +3,7 @@ extends layout_admin
 block content
     div.container
         h2 Track details
+        div#track-map-canvas
         div.row.tab-of-contents
             div.col.s12
                 ul.tabs.tabs-fixed-width.z-depth-1
@@ -111,3 +112,5 @@ block content
                                         td= pod.position.time
                     else
                         div #{translation.NOPODS}
+    script(src='/js/admin/map.js', type="text/javascript")
+    script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgbiWlxTJT5fSxxdawlyu7fPGO-_JeYYo&callback=initMap")
