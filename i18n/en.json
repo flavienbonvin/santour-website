@@ -50,7 +50,12 @@
   "TRACKDETAILS": "Detailed track",
   "POSITIONS" : "Positions",
   "POISLIST": "POIs List",
-  "PODSLIST": "PODs List"
+  "PODSLIST": "PODs List",
+
+  "DELETECONFIRMATION": "Confirmation of deletion",
+  "CONFIRM": "Confirm",
+  "CANCEL": "Cancel",
+  "DELETEMESSAGE": "Please confirm the deletion of the track"
 
 
 

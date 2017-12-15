@@ -72,7 +72,7 @@ router.get('/users/add', function(req, res, next) {
 
 
 /*GET user by id*/
-router.get('/users/user=:id', function(req, res, next) {
+router.get('/users/:id', function(req, res, next) {
     var id = req.params.id;
     console.log("REQUEST GET USER DETAILS OF :"+id);
     userDB.getById(id).then(function(user) {
@@ -100,9 +100,7 @@ router.post('/categories', function(req,res,next){
 })
 router.get('/categories/remove/:id',function(req,res,next) {
     categoryPOIDB.delete(new CategoryPOI(req.params.id,"")).then(() => {
-        categoryPOIDB.getAll().then(function (list) {
-            res.render('admin/categories', {title: 'Express', categories : list});
-        })
+        res.redirect("/categories");
     })
 })
 
@@ -117,9 +115,7 @@ router.get('/difficulties', function(req, res, next) {
 });
 router.post('/difficulties',function(req,res,next) {
     categoryPODDB.add(new CategoryPOD(null,req.body.name)).then(() => {
-        categoryPODDB.getAll().then(function (list) {
-            res.render('admin/difficulties', {title: 'Express', difficulties : list});
-        })
+        res.redirect("/difficulties");
     })
 })
 router.get('/difficulties/remove/:id',function(req,res,next) {

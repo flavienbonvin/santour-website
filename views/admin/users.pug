@@ -16,7 +16,7 @@ block content
                     th
             tbody
                 each user in users
-                    tr(onclick='getUserDetails("'+user.id+'")')
+                    tr
                         .user
                             td
                                 value=user.id
@@ -25,5 +25,7 @@ block content
                             td
                                 value=user.typeUser
                             td
-                                a.right.red-text
+                                a.right.black-text
                                     i.material-icons delete
+                                a(href="/admin/users/" + user.id).right.black-text
+                                    i.material-icons remove_red_eye

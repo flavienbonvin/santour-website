@@ -13,28 +13,22 @@ block content
                     th
             tbody#bodyTracks
                 each track in tracks
-                    tr(onclick='getTrackDetails("'+track.id+'")')
+                    tr
                         td= track.id
                         td= track.name
                         td #{Math.round(track.distance)} m
                         td
-                            a(href="/admin/tracks/remove/"+track.id).right.black-text
+                            a(href="#track-delete-confirmation").right.black-text.modal-trigger
                                 i.material-icons delete
                             a(href="/admin/tracks/exports/"+track.id).right.black-text
                                 i.material-icons file_download
+                            a(href="/admin/tracks/" + track.id).right.black-text
+                                i.material-icons remove_red_eye
 
-
-        //ul.collapsible(data-collapsible='accordion')
-        //    each track in tracks
-        //        li
-        //            .collapsible-header
-        //                span.right(onclick='deleteTrack("'+track.id+'",event)')
-        //                    i.material-icons delete
-        //                span= track.name
-        //            .collapsible-body
-        //                div Distance du parcours : #{Math.round(track.distance)}m.
-        //                div Difficulté : #{track.difficulty}
-        //                if track.isForEveryone
-        //                    div Pour tout le monde : oui
-        //                else
-        //                    div Pour tout le monde : non
+                    div#track-delete-confirmation.modal
+                        div.modal-content
+                            h4 #{translation.DELETECONFIRMATION}
+                            p #{translation.DELETEMESSAGE}
+                        div.modal-footer
+                            a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="/admin/tracks/remove/"+track.id) #{translation.CONFIRM}
+                            a.modal-action.modal-close.waves-effect.waves-green.btn-flat #{translation.CANCEL}

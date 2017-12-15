@@ -3,4 +3,5 @@ $(document).ready(function(){
     $(".dropdown-button").dropdown();
     $('select').material_select();
     $('ul.tabs').tabs();
+    $('.modal').modal();
 });

@@ -48,6 +48,12 @@
   "TRACKDETAILS": "Detaillierter Spur",
   "POSITIONS" : "Positionen",
   "POISLIST": "Liste der POIs",
-  "PODSLIST": "Liste der PODs"
+  "PODSLIST": "Liste der PODs",
+
+  "DELETECONFIRMATION": "Bestätigung der Löschung",
+  "CONFIRM": "Bestätigen",
+  "CANCEL": "Abbrechen",
+  "DELETEMESSAGE": "Bitte bestätigen Sie die Löschung des Tracks"
+
 
 }
