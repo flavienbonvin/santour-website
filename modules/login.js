@@ -15,5 +15,15 @@ var self = module.exports = {
     },
     logout(session){
         session.idUser = false;
+    },
+    addUser(email,password){
+        return new Promise((resolve,reject) => {
+            auth.createUserWithEmailAndPassword(email,password).then((res) => {
+                resolve();
+            }).catch((error) => {
+                console.log(error);
+                resolve();
+            })
+        })
     }
 }

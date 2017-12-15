@@ -4,11 +4,11 @@ block content
     div.container
         h2 #{translation.NEWUSER}
         div.row
-            form.col.s12
+            form(method="post").col.s12
                 div.row
                     div.input-field.col.s6
                         i.material-icons.prefix email
-                        input#email.validate(type="email")
+                        input#email.validate(type="email",name="email")
                         label(for="email") #{translation.EMAIL}
                     div.input-field.col.s6
                         i.material-icons.prefix group
@@ -18,7 +18,7 @@ block content
                         label #{translation.TYPE}
                     div.input-field.col.s6
                         i.material-icons.prefix lock_outline
-                        input#newpassword.validate(type="password", placeholder="")
+                        input#newpassword.validate(type="password", placeholder="",name="password")
                         label(for="newpassword") #{translation.PASSWORD}
                     div.input-field.col.s6
                         i.material-icons.prefix lock_outline

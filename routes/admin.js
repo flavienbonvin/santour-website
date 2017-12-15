@@ -69,6 +69,11 @@ router.get('/users', function(req, res, next) {
 router.get('/users/add', function(req, res, next) {
     res.render('admin/user_new');
 });
+router.post('/users/add', function(req, res, next){
+    login.addUser(req.body.email,req.body.password).then(() => {
+        res.redirect('/admin/users');
+    })
+})
 
 
 /*GET user by id*/

@@ -31,7 +31,6 @@ function initMap() {
             lat: trackDetails.pods[i].position.latitude,
             lng: trackDetails.pods[i].position.longitude
         }
-        console.log('pod');
         
         var marker = new google.maps.Marker({
             position: temp,
@@ -45,7 +44,6 @@ function initMap() {
             lat: trackDetails.pois[i].position.latitude,
             lng: trackDetails.pois[i].position.longitude
         }
-       console.log('poi');
         var marker = new google.maps.Marker({
             position: temp,
             map: map,
