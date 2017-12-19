@@ -10,16 +10,13 @@ block content
         table#tableUsers.highlight
             thead
                 tr
-                    th #{translation.ID}
                     th #{translation.EMAIL}
                     th #{translation.TYPE}
-                    th
+                    th.right #{translation.ACTION}
             tbody
                 each user in users
                     tr
                         .user
-                            td
-                                value=user.id
                             td
                                 value=user.email
                             td

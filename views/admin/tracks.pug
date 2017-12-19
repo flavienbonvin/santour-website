@@ -6,24 +6,23 @@ block content
         table.highlight
             thead
                 tr
-                    th #{translation.ID}
                     th #{translation.NAME}
                     th #{translation.DISTANCE}
-                    th
-                    th
+                    th #{translation.TIMER}
+                    th.right #{translation.ACTION}
             tbody#bodyTracks
                 each track in tracks
                     tr
-                        td= track.id
                         td= track.name
                         td #{Math.round(track.distance)} m
+                        td= track.duration
                         td
                             a(href="#track-delete-confirmation").right.black-text.modal-trigger
-                                i.material-icons delete
+                                i.material-icons.right delete
                             a(href="/admin/tracks/exports/"+track.id).right.black-text
-                                i.material-icons file_download
+                                i.material-icons.right file_download
                             a(href="/admin/tracks/" + track.id).right.black-text
-                                i.material-icons remove_red_eye
+                                i.material-icons.right remove_red_eye
 
                     div#track-delete-confirmation.modal
                         div.modal-content
