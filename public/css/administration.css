@@ -125,3 +125,8 @@ main, footer {
     padding-right: 20px;
     font-size: 35px;
 }
+
+#tableSettings label {
+    font-size: 15.5px;
+    color: black;
+}

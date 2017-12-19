@@ -5,25 +5,24 @@ block content
         h2 Settings
         table#tableSettings.highlight
             tbody
+                tr
+                    td
+                        label #{translation.DISTANCEMIN}
+                    td
+                        input#myMinNumber(type='number', value='8')
+                tr
+                    td
+                        label #{translation.VALUESEEKBAR}
+                    td
+                        input#mySeekValue(type='number', value='10')
+                tr
+                    td
 
-                tr
                     td
-                        h5 #{translation.DISTANCEMIN}
-                    td
-                        .col.s9
-                            input#myMinNumber(type='number', value='8')
-                tr
-                    td
-                        h5 #{translation.DISTANCEMAX}
-                    td
-                        .col.s9
-                            input#myMaxNumber(type='number', value='800')
-                tr
-                    td
-                        h5 #{translation.EXPORTDATA}
-                    td
-                        .input-field.col.s9
-                            i.material-icons.left file_download
+                        a.waves-effect.waves-light.btn.right
+                            i.material-icons.right file_download
+                            | #{translation.EXPORTDATA}
+
 
 
 
