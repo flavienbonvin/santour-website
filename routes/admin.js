@@ -9,6 +9,7 @@ var exported = require('../modules/export');
 
 var CategoryPOI = require('../models/CategoryPOI');
 var CategoryPOD = require('../models/CategoryPOD');
+var User = require('../models/User');
 
 router.use((req,res,next) =>{
     if(!req.session.idUser){
@@ -70,7 +71,7 @@ router.get('/users/add', function(req, res, next) {
     res.render('admin/user_new');
 });
 router.post('/users/add', function(req, res, next){
-    login.addUser(req.body.email,req.body.password).then(() => {
+    userDB.add(new User(null,null,req.body.email,req.body.password,req.body.userType)).then(() => {
         res.redirect('/admin/users');
     })
 })
@@ -105,7 +106,7 @@ router.post('/categories', function(req,res,next){
 })
 router.get('/categories/remove/:id',function(req,res,next) {
     categoryPOIDB.delete(new CategoryPOI(req.params.id,"")).then(() => {
-        res.redirect("/categories");
+        res.redirect("/admin/categories");
     })
 })
 
@@ -120,14 +121,12 @@ router.get('/difficulties', function(req, res, next) {
 });
 router.post('/difficulties',function(req,res,next) {
     categoryPODDB.add(new CategoryPOD(null,req.body.name)).then(() => {
-        res.redirect("/difficulties");
+        res.redirect("/admin/difficulties");
     })
 })
 router.get('/difficulties/remove/:id',function(req,res,next) {
     categoryPODDB.delete(new CategoryPOD(req.params.id,"")).then(() => {
-        categoryPODDB.getAll().then(function (list) {
-            res.render('admin/difficulties', {title: 'Express', difficulties : list});
-        })
+        res.redirect("/admin/difficulties");
     })
 })
 

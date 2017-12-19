@@ -1,5 +1,6 @@
 var User = require('../models/User');
 var firebase = require('./firebase').database;
+var auth = require('./firebase').auth;
 
 var self = module.exports = {
     /**
@@ -8,11 +9,19 @@ var self = module.exports = {
      */
     add(object) {
         return new Promise((resolve, reject) => {
-            var newPostKey = firebase.database().ref('/users').push().key;
-            object.id = newPostKey;
-            firebase.ref('/users').set(object.convertToFirebase()).then(() => {
+            auth.createUserWithEmailAndPassword(object.email, object.password).then((res) => {
+                console.log(res);
+                var newPostKey = firebase.ref('/users').push().key;
+                object.id = newPostKey;
+                object.idAuth = res.uid;
+                firebase.ref('/users/'+newPostKey).set(object.convertToFirebase()).then(() => {
+                    resolve();
+                })
+            }).catch((error) => {
+                console.log(error);
                 resolve();
             })
+
         })
     },
     /**
@@ -62,7 +71,16 @@ var self = module.exports = {
         return new Promise((resolve, reject) => {
             var ref = firebase.ref("/users");
             ref.orderByChild("pseudo").equalTo(pseudo).on("child_added", function (snapshot) {
-                var u = self._createUser(snapshot.key,snapshot.val());
+                var u = self._createUser(snapshot.key, snapshot.val());
+                resolve(u);
+            });
+        })
+    },
+    getByidAuth(idAuth){
+        return new Promise((resolve, reject) => {
+            var ref = firebase.ref("/users");
+            ref.orderByChild("idAuth").equalTo(idAuth).on("child_added", function (snapshot) {
+                var u = self._createUser(snapshot.key, snapshot.val());
                 resolve(u);
             });
         })
@@ -70,7 +88,7 @@ var self = module.exports = {
 
 
     _createUser(key, info) {
-        var obj = new User(key, info['pseudo'], info['email'], info['password'], info['typeUser']);
+        var obj = new User(key, info['idAuth'], info['email'], null, info['typeUser']);
         return obj;
     }
 }
