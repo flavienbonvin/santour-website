@@ -6,6 +6,7 @@ var categoryPOIDB = require('../db/CategoryPOIDB');
 var categoryPODDB = require('../db/CategoryPODDB');
 var login = require('../modules/login');
 var exported = require('../modules/export');
+var settings = require('../modules/settings');
 
 var CategoryPOI = require('../models/CategoryPOI');
 var CategoryPOD = require('../models/CategoryPOD');
@@ -133,6 +134,12 @@ router.get('/difficulties/remove/:id',function(req,res,next) {
 
 router.get('/settings', function(req, res, next) {
     res.render('admin/settings');
+});
+router.post('/settings', function(req, res, next) {
+    settings.save(req.body.myMinNumber,req.body.mySeekValue).then(() => {
+        res.render('admin/settings');
+    })
+    
 });
 
 

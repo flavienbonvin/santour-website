@@ -1,0 +1,1 @@
+minimanlDistance:8,seekbarValue:10

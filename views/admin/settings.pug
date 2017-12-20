@@ -3,25 +3,21 @@ extends layout_admin
 block content
     div.container
         h2 Settings
-        table#tableSettings.highlight
-            tbody
-                tr
-                    td
-                        label #{translation.DISTANCEMIN}
-                    td
-                        input#myMinNumber(type='number', value='8')
-                tr
-                    td
-                        label #{translation.VALUESEEKBAR}
-                    td
-                        input#mySeekValue(type='number', value='10')
-                tr
-                    td
-
-                    td
-                        a.waves-effect.waves-light.btn.right
-                            i.material-icons.right file_download
-                            | #{translation.EXPORTDATA}
+        form(method="post")
+            table#tableSettings.highlight
+                tbody
+                    tr
+                        td
+                            label #{translation.DISTANCEMIN}
+                        td
+                            input#myMinNumber(name="myMinNumber",type='number', value='8')
+                    tr
+                        td
+                            label #{translation.VALUESEEKBAR}
+                        td
+                            input#mySeekValue(name="mySeekValue",type='number', value='10')
+            input(type="submit", value=translation.SAVE).waves-effect.waves-light.btn.right
+                            
 
 
 
