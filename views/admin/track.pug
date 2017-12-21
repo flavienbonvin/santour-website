@@ -80,7 +80,7 @@ block content
                                         td= index
                                         td
                                             if poi.picture
-                                                img.po-img(src='https://firebasestorage.googleapis.com/v0/b/santour-c0a51.appspot.com/o/' + poi.picture.replace('/', '%2F') + '?alt=media')
+                                                img.po-img.materialboxed(src='https://firebasestorage.googleapis.com/v0/b/santour-c0a51.appspot.com/o/' + poi.picture.replace('/', '%2F') + '?alt=media', )
                                         td= poi.name
                                         td= poi.description
                                         td= poi.position.altitude
@@ -108,7 +108,7 @@ block content
                                         td= index
                                         td
                                             if pod.picture
-                                                img.po-img(src='https://firebasestorage.googleapis.com/v0/b/santour-c0a51.appspot.com/o/'+pod.picture.replace('/','%2F')+'?alt=media')
+                                                img.po-img.materialboxed(src='https://firebasestorage.googleapis.com/v0/b/santour-c0a51.appspot.com/o/'+pod.picture.replace('/','%2F')+'?alt=media')
                                         td= pod.name
                                         td= pod.description
                                         td= pod.position.altitude

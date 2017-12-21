@@ -4,4 +4,5 @@ $(document).ready(function(){
     $('select').material_select();
     $('ul.tabs').tabs();
     $('.modal').modal();
+    $('.materialboxed').materialbox();
 });
