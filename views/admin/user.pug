@@ -21,7 +21,12 @@ block content
                     div.input-field.col.s6
                         i.material-icons.prefix group
                         select#usertype.validate(disabled)
-                            option(value=user.typeUser, selected) #{user.typeUser}
+                            if(user.typeUser == 'admin')
+                                option(value=user.typeUser, selected) #{user.typeUser}
+                                option(value=tracker) tracker
+                            if(user.typeUser == "tracker")
+                                option(value=user.typeUser, selected) #{user.typeUser}
+                                option(value="admin") admin
                         label #{translation.TYPE}
                     div.input-field.col.s6
                         i.material-icons.prefix lock
