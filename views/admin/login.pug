@@ -3,20 +3,6 @@ extends layout_login
 block content
     div.full-screen.teal.valign-wrapper
         div.container
-            div.row
-                div.right
-                    a.black-text.dropdown-button(href="#!")&attributes({'data-activates': 'language-dropdown'}) Language
-                        i.material-icons.left language
-                        i.material-icons.right arrow_drop_down
-
-                    ul(id="language-dropdown").dropdown-content
-                        li
-                            a(href="?clang=en") EN
-                        li
-                            a(href="?clang=fr") FR
-                        li
-                            a(href="?clang=de") DE
-
             div.row.valign-wrapper
                 div.padding-center.margin-auto.card-panel
                     div.login-logo
@@ -35,6 +21,12 @@ block content
                              button.btn(type='submit', name='action') #{translation.LOGIN}
                         div.center-align.resetPass
                              label #{translation.RESETPASS}
+                        div.center-align.language
+                            a.black-text(href="?clang=en") EN
+                            a.black-text(href="?clang=fr") FR
+                            a.black-text(href="?clang=de") DE
+
+
 
 
 

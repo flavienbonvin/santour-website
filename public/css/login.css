@@ -15,4 +15,9 @@
 
 .resetPass {
     margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.language a{
+    margin: 15px;
 }
