@@ -2,10 +2,10 @@ extends layout_admin
 
 block content
     div.container
-        a.waves-effect.waves-light.btn.right(onclick='newUserMode()')
-            i.material-icons.right.white-text#personicon person_add
-        a.waves-effect.waves-light.btn.right(onclick='')
-            i.material-icons.right.white-text#fileicon file_download
+        a.waves-effect.waves-light.btn.right.users-action(onclick='newUserMode()')
+            i.material-icons.white-text person_add
+        a.waves-effect.waves-light.btn.right.users-action(onclick='')
+            i.material-icons.white-text file_download
         h2 #{translation.USERS}
         table#tableUsers.highlight
             thead
@@ -25,4 +25,4 @@ block content
                                 a(href="/admin/users/delete/"+user.id).right.black-text
                                     i.material-icons delete
                                 a(href="/admin/users/" + user.id).right.black-text
-                                    i.material-icons remove_red_eye
+                                    i.material-icons.right remove_red_eye
