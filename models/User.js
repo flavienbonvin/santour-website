@@ -7,9 +7,10 @@ var user = class User {
      * @param {string} password 
      * @param {string} typeUser 
      */
-    constructor(id, idAuth, email, password, typeUser) {
+    constructor(id, idAuth, credentials, email, password, typeUser) {
         this.id = id;
         this.idAuth = idAuth;
+        this.credentials = credentials;
         this.email = email;
         this.password = password;
         this.typeUser = typeUser;
@@ -18,6 +19,7 @@ var user = class User {
     convertToFirebase(){
         return {
             idAuth : this.idAuth,
+            credentials : this.credentials,
             email : this.email,
             typeUser : this.typeUser
         }

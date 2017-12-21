@@ -22,7 +22,7 @@ block content
                             td
                                 value=user.typeUser
                             td
-                                a.right.black-text
+                                a(href="/admin/users/delete/"+user.id).right.black-text
                                     i.material-icons delete
                                 a(href="/admin/users/" + user.id).right.black-text
                                     i.material-icons remove_red_eye

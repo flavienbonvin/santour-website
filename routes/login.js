@@ -5,8 +5,6 @@ var login = require('../modules/login');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    console.log('maxime');
-    console.log("max "+req.session.idUser);
     if(req.session.idUser){
         res.redirect('/admin');
     }else{

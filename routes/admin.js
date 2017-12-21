@@ -12,47 +12,47 @@ var CategoryPOI = require('../models/CategoryPOI');
 var CategoryPOD = require('../models/CategoryPOD');
 var User = require('../models/User');
 
-router.use((req,res,next) =>{
-    if(!req.session.idUser){
+router.use((req, res, next) => {
+    if (!req.session.idUser) {
         res.redirect("/");
-    }else{
+    } else {
         res.locals.emailUser = req.session.emailUser;
         next();
-    }  
+    }
 })
 
 /*
 ----------------Tracks----------------
 */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     res.redirect('/admin/tracks')
 
 });
 /*GET list of tracks*/
-router.get('/tracks', function(req, res, next) {
-    trackDB.getAll().then(function(list) {
-        res.render('admin/tracks', { title: 'Express', tracks : list });
+router.get('/tracks', function (req, res, next) {
+    trackDB.getAll().then(function (list) {
+        res.render('admin/tracks', { title: 'Express', tracks: list });
     })
 
 });
 
 /*GET track by id*/
-router.get('/tracks/:id', function(req, res, next) {
+router.get('/tracks/:id', function (req, res, next) {
     var id = req.params.id;
-    trackDB.getById(id).then(function(track) {
+    trackDB.getById(id).then(function (track) {
         console.log(track);
         console.log(track.pois.length);
-        res.render('admin/track', { title: 'Express', track : track });
+        res.render('admin/track', { title: 'Express', track: track });
     })
 });
-router.get('/tracks/remove/:id', function(req, res, next) {
+router.get('/tracks/remove/:id', function (req, res, next) {
     trackDB.delete(req.params.id).then(() => {
         res.redirect('/admin/tracks');
     })
 });
-router.get("/tracks/exports/:id",function(req,res,next) {
+router.get("/tracks/exports/:id", function (req, res, next) {
     exported.exportToCSV(req.params.id).then((path) => {
-        var newPath = path.replace('/../public','');
+        var newPath = path.replace('/../public', '');
         console.log(newPath);
         res.redirect(newPath);
     })
@@ -61,31 +61,37 @@ router.get("/tracks/exports/:id",function(req,res,next) {
 
 
 /*GET list of users*/
-router.get('/users', function(req, res, next) {
-    userDB.getAll().then(function(list) {
-        res.render('admin/users', { title: 'Express', users : list });
+router.get('/users', function (req, res, next) {
+    userDB.getAll().then(function (list) {
+        res.render('admin/users', { title: 'Express', users: list });
     })
 });
 
 /*New user*/
-router.get('/users/add', function(req, res, next) {
+router.get('/users/add', function (req, res, next) {
     res.render('admin/user_new');
 });
-router.post('/users/add', function(req, res, next){
-    userDB.add(new User(null,null,req.body.email,req.body.password,req.body.userType)).then(() => {
+router.post('/users/add', function (req, res, next) {
+    userDB.add(new User(null, null, null, req.body.email, req.body.password, req.body.userType)).then(() => {
         res.redirect('/admin/users');
     })
 })
 
 
 /*GET user by id*/
-router.get('/users/:id', function(req, res, next) {
+router.get('/users/:id', function (req, res, next) {
     var id = req.params.id;
-    console.log("REQUEST GET USER DETAILS OF :"+id);
-    userDB.getById(id).then(function(user) {
-        res.render('admin/user', { title: 'Express', user : user });
+    userDB.getById(id).then(function (user) {
+        res.render('admin/user', { title: 'Express', user: user });
     })
 });
+
+router.get('/users/delete/:id', function (req, res, next) {
+    var id = req.params.id;
+    userDB.delete(id).then(() => {
+        res.redirect('/admin/users')
+    })
+})
 
 
 /*
@@ -93,20 +99,20 @@ router.get('/users/:id', function(req, res, next) {
 */
 
 
-router.get('/categories', function(req, res, next) {
+router.get('/categories', function (req, res, next) {
     categoryPOIDB.getAll().then(function (list) {
-        res.render('admin/categories', {title: 'Express', categories : list});
+        res.render('admin/categories', { title: 'Express', categories: list });
     })
 });
-router.post('/categories', function(req,res,next){
-    categoryPOIDB.add(new CategoryPOI(null,req.body.name)).then(() =>{
+router.post('/categories', function (req, res, next) {
+    categoryPOIDB.add(new CategoryPOI(null, req.body.name)).then(() => {
         categoryPOIDB.getAll().then(function (list) {
-            res.render('admin/categories', {title: 'Express', categories : list});
+            res.render('admin/categories', { title: 'Express', categories: list });
         })
     })
 })
-router.get('/categories/remove/:id',function(req,res,next) {
-    categoryPOIDB.delete(new CategoryPOI(req.params.id,"")).then(() => {
+router.get('/categories/remove/:id', function (req, res, next) {
+    categoryPOIDB.delete(new CategoryPOI(req.params.id, "")).then(() => {
         res.redirect("/admin/categories");
     })
 })
@@ -115,35 +121,35 @@ router.get('/categories/remove/:id',function(req,res,next) {
 ----------------Difficulties----------------
 */
 
-router.get('/difficulties', function(req, res, next) {
+router.get('/difficulties', function (req, res, next) {
     categoryPODDB.getAll().then(function (list) {
-        res.render('admin/difficulties', {title: 'Express', difficulties : list});
+        res.render('admin/difficulties', { title: 'Express', difficulties: list });
     })
 });
-router.post('/difficulties',function(req,res,next) {
-    categoryPODDB.add(new CategoryPOD(null,req.body.name)).then(() => {
+router.post('/difficulties', function (req, res, next) {
+    categoryPODDB.add(new CategoryPOD(null, req.body.name)).then(() => {
         res.redirect("/admin/difficulties");
     })
 })
-router.get('/difficulties/remove/:id',function(req,res,next) {
-    categoryPODDB.delete(new CategoryPOD(req.params.id,"")).then(() => {
+router.get('/difficulties/remove/:id', function (req, res, next) {
+    categoryPODDB.delete(new CategoryPOD(req.params.id, "")).then(() => {
         res.redirect("/admin/difficulties");
     })
 })
 
 
-router.get('/settings', function(req, res, next) {
+router.get('/settings', function (req, res, next) {
     res.render('admin/settings');
 });
-router.post('/settings', function(req, res, next) {
-    settings.save(req.body.myMinNumber,req.body.mySeekValue).then(() => {
+router.post('/settings', function (req, res, next) {
+    settings.save(req.body.myMinNumber, req.body.mySeekValue).then(() => {
         res.render('admin/settings');
     })
-    
+
 });
 
 
-router.get('/logout', function(req,res,next){
+router.get('/logout', function (req, res, next) {
     login.logout(req.session);
     res.redirect('/');
 })
