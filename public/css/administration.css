@@ -24,6 +24,9 @@ main, footer {
 #bold-title2 {
     font-weight: 500 !important;
 }
+#bold-title3 {
+    font-weight: 500 !important;
+}
 
 /*NAV BAR */
 .nav-wrapper .user {
@@ -116,17 +119,11 @@ main, footer {
     margin: 0 10px;
 }
 
-#personicon {
-    padding-right: 20px;
-    font-size: 37px;
-}
-
-#fileicon {
-    padding-right: 20px;
-    font-size: 35px;
+.users-action {
+    margin-left: 15px;
 }
 
 #tableSettings label {
-    font-size: 15.5px;
+    font-size: 15px;
     color: black;
 }
