@@ -8,19 +8,19 @@ block content
                 i.material-icons.left close
             a#user-edit-on-button.waves-effect.waves-light.btn.right(onclick='unlockUserEditMode()') #{translation.EDIT}
                 i.material-icons.left mode_edit
-            form.col.s12
+            form(method="post").col.s12
                 div.row
                     div.input-field.col.s6
                         i.material-icons.prefix vpn_key
-                        input#id.validate(type="text", placeholder=user.id, disabled)
+                        input#id.validate(type="text", value=user.id, disabled)
                         label(for="id") #{translation.ID}
                     div.input-field.col.s6
                         i.material-icons.prefix email
-                        input#email.validate(type="email", placeholder=user.email, disabled)
+                        input#email.validate(type="email",name="email", value=user.email, disabled)
                         label(for="email") #{translation.EMAIL}
                     div.input-field.col.s6
                         i.material-icons.prefix group
-                        select#usertype.validate(disabled)
+                        select#usertype.validate(disabled,name="userType")
                             if(user.typeUser == 'admin')
                                 option(value=user.typeUser, selected) #{user.typeUser}
                                 option(value=tracker) tracker
@@ -28,18 +28,16 @@ block content
                                 option(value=user.typeUser, selected) #{user.typeUser}
                                 option(value="admin") admin
                         label #{translation.TYPE}
-                    div.input-field.col.s6
-                        i.material-icons.prefix lock
-                        input#oldpassword.validate(type="password", value=user.password, disabled)
-                        label(for="oldpassword") #{translation.PASSWORD}
                     div#newpassword-input.input-field.col.s6
                         i.material-icons.prefix lock_outline
-                        input#newpassword.validate(type="password", placeholder="")
+                        input#newpassword.validate(type="password", value="",name="newpassword")
                         label(for="newpassword") #{translation.PASSWORD}
                     div#confirmpassword-input.input-field.col.s6
                         i.material-icons.prefix lock_outline
-                        input#confirmpassword.validate(type="password", placeholder="")
+                        input#confirmpassword.validate(type="password", value="")
                         label(for="confirmpassword") #{translation.PASSWORD}
+                    input(type="hidden",name="credentials", value=user.credentials)
+                    input(type="hidden",name="idAuth", value=user.idAuth)
                 div.row
                     button#user-edit-save-button.right.btn.waves-effect.waves-light(type="submit", name="action") Sauvegarder
                         i.material-icons.right save

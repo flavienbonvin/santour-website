@@ -35,9 +35,24 @@ var self = module.exports = {
      */
     update(object) {
         return new Promise((resolve, reject) => {
-            firebase.ref('/users/' + object.id).set(object.convertToFirebase()).then(() => {
-                resolve();
-            })
+            console.log(object);
+            if(object.password!=""){
+                self.getById(object.id).then((userInDB) => {
+                    auth.signInWithCustomToken(object.credentials).then((user) => {
+                        user.updatePassword(object.password).then(() => {
+                            firebase.ref('/users/' + object.id).set(object.convertToFirebase()).then(() => {
+                                resolve();
+                            })
+                        })
+                    })
+                });
+            }else{
+                firebase.ref('/users/' + object.id).set(object.convertToFirebase()).then(() => {
+                    resolve();
+                })
+            }
+            
+            
         })
     },
     /**
