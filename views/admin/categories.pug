@@ -20,10 +20,12 @@ block content
                                 i.material-icons.left add
                     td
                 each categorie in categories
-                    tr(onclick='getAll(' + categorie.id + ')')
+                    tr
                         .categorie
                             td
-                                value=categorie.name
+                                span(id="cat"+categorie.id)= categorie.name
                             td
                                 a(href="/admin/categories/remove/"+categorie.id).right.black-text
                                     i.material-icons delete
+                                a(onclick="editCat('"+categorie.id+"')").right.black-text
+                                    i.material-icons mode_edit

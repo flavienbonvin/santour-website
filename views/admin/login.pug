@@ -20,7 +20,7 @@ block content
                         div.center-align
                              button.btn(type='submit', name='action') #{translation.LOGIN}
                         div.center-align.resetPass
-                             label #{translation.RESETPASS}
+                             label(onclick="resetPass()") #{translation.RESETPASS}
                         div.center-align.language
                             a.black-text(href="?clang=en") EN
                             a.black-text(href="?clang=fr") FR

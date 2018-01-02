@@ -61,11 +61,11 @@ var self = module.exports = {
      * @param {string} id
      * @return {Promise<Track>}
      */
-    getById(id){
+    getById(id) {
         return new Promise((resolve, reject) => {
-            firebase.ref('/tracks/'+id).once('value').then(function (objects) {
+            firebase.ref('/tracks/' + id).once('value').then(function (objects) {
                 var obj = objects.val();
-                var res  = self._createTrack(id, obj);
+                var res = self._createTrack(id, obj);
                 resolve(res);
             });
         })
@@ -74,8 +74,7 @@ var self = module.exports = {
 
     _createTrack(key, info) {
         var positions = [];
-        if(info['positions'])
-        {
+        if (info['positions']) {
             for (var i = 0; i < info['positions'].length; i++) {
                 positions.push(self._createPosition(info['positions'][i]));
             }
@@ -90,14 +89,34 @@ var self = module.exports = {
 
         var pois = [];
         if (info['pois']) {
-            
+
             for (var i = 0; i < info['pois'].length; i++) {
                 pois.push(self._createPOI(info['pois'][i]));
             }
         }
 
+        var duration = Math.floor(Number(info['duration']) / 1000);
+        if (duration > 60) {
+            var durationMinute = Math.floor(duration / 60);
+            var durationSeconde = Math.floor(duration % 60);
+            if (durationMinute > 60) {
+                var durationHeure = Math.floor(durationMinute / 60);
+                durationMinute = Math.floor(durationMinute % 60);
+                if (durationHeure > 24) {
+                    var durationJour = Math.floor(durationHeure / 24);
+                    durationHeure = Math.floor(durationHeure % 24);
+                    duration = durationJour + "j" + durationHeure + "h" + durationMinute + "m" + durationSeconde + "s";
+                } else {
+                    duration = durationHeure + "h" + durationMinute + "m" + durationSeconde + "s";
+                }
+            } else {
+                duration = durationMinute + "m" + durationSeconde + "s";
+            }
+        } else {
+            duration = duration + "s";
+        }
 
-        var obj = new Track(key, info['name'], info['distance'], info['pauseDuration'], info['forEveryone'], info['difficulty'], info['idUser'], positions, pods, pois, info['typeTrackID']);
+        var obj = new Track(key, info['name'], info['distance'], info['duration'], duration, info['pauseDuration'], info['forEveryone'], info['difficulty'], info['idUser'], positions, pods, pois);
         return obj;
     },
     _createPosition(info) {

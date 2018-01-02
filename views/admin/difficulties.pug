@@ -21,10 +21,12 @@ block content
                                 i.material-icons.left add
                     td
                 each difficulty in difficulties
-                    tr(onclick='getAll(' + difficulty.id + ')')
+                    tr
                         .difficulty
                             td
-                                value=difficulty.name
+                                span(id="diff"+difficulty.id)= difficulty.name
                             td
                                 a(href="/admin/difficulties/remove/"+difficulty.id).right.black-text
                                     i.material-icons delete
+                                a(onclick="editDiff('"+difficulty.id+"')").right.black-text
+                                    i.material-icons mode_edit

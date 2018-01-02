@@ -1,7 +1,11 @@
+
 var User = require('../models/User');
 var firebase = require('./firebase').database;
 var auth = require('./firebase').auth;
 var adminAuth = require('./firebase').adminAuth;
+var Cryptr = require('cryptr');
+var cryptr = new Cryptr('secretkey');
+var email = require('../modules/mail');
 
 var self = module.exports = {
     /**
@@ -10,18 +14,15 @@ var self = module.exports = {
      */
     add(object) {
         return new Promise((resolve, reject) => {
+            console.log(object);
             auth.createUserWithEmailAndPassword(object.email, object.password).then((res) => {
-                adminAuth.createCustomToken(res.uid).then(function(customToken) {
-                    var newPostKey = firebase.ref('/users').push().key;
-                    object.id = newPostKey;
-                    object.idAuth = res.uid;
-                    object.credentials = customToken;
-                    firebase.ref('/users/'+newPostKey).set(object.convertToFirebase()).then(() => {
-                        resolve();
-                    })
+                var newPostKey = firebase.ref('/users').push().key;
+                object.id = newPostKey;
+                object.idAuth = res.uid;
+                object.password = cryptr.encrypt(object.password);
+                firebase.ref('/users/' + newPostKey).set(object.convertToFirebase()).then(() => {
+                    resolve();
                 })
-              
-                
             }).catch((error) => {
                 console.log(error);
                 resolve();
@@ -36,9 +37,9 @@ var self = module.exports = {
     update(object) {
         return new Promise((resolve, reject) => {
             console.log(object);
-            if(object.password!=""){
+            if (object.password != "") {
                 self.getById(object.id).then((userInDB) => {
-                    auth.signInWithCustomToken(object.credentials).then((user) => {
+                    auth.signInWithEmailAndPassword(object.email, object.password).then((user) => {
                         user.updatePassword(object.password).then(() => {
                             firebase.ref('/users/' + object.id).set(object.convertToFirebase()).then(() => {
                                 resolve();
@@ -46,13 +47,28 @@ var self = module.exports = {
                         })
                     })
                 });
-            }else{
+            } else {
                 firebase.ref('/users/' + object.id).set(object.convertToFirebase()).then(() => {
                     resolve();
                 })
             }
-            
-            
+
+
+        })
+    },
+    resetPassword(newPassword, idAuth) {
+        return new Promise((resolve, reject) => {
+            self.getByidAuth(idAuth).then((object) => {
+                auth.signInWithEmailAndPassword(object.email, object.password).then((user) => {
+                    console.log(newPassword)
+                    user.updatePassword(newPassword).then(() => {
+                        object.password = cryptr.encrypt(newPassword);
+                        firebase.ref('/users/' + object.id).set(object.convertToFirebase()).then(() => {
+                            resolve();
+                        })
+                    })
+                })
+            })
         })
     },
     /**
@@ -62,7 +78,7 @@ var self = module.exports = {
     delete(id) {
         return new Promise((resolve, reject) => {
             self.getById(id).then((object) => {
-                auth.signInWithCustomToken(object.credentials).then((user) => {
+                auth.signInWithEmailAndPassword(object.email, object.password).then((user) => {
                     user.delete().then(() => {
                         firebase.ref('/users/' + object.id).remove().then(() => {
                             resolve();
@@ -102,19 +118,51 @@ var self = module.exports = {
             });
         })
     },
-    getByidAuth(idAuth){
+    /**
+     * 
+     * @param {*} email 
+     * @returns {Promise<User>}
+     */
+    getByEmail(email) {
         return new Promise((resolve, reject) => {
             var ref = firebase.ref("/users");
-            ref.orderByChild("idAuth").equalTo(idAuth).on("child_added", function (snapshot) {
+            
+            ref.orderByChild("email").equalTo(email).on("child_added", function (snapshot) {
+                console.log('ici');
+                console.log(snapshot);
                 var u = self._createUser(snapshot.key, snapshot.val());
                 resolve(u);
             });
         })
     },
+    /**
+     * 
+     * @param {*} idAuth 
+     * @return {Promise<User>}
+     */
+    getByidAuth(idAuth) {
+        return new Promise((resolve, reject) => {
+            var ref = firebase.ref("/users");
+            ref.orderByChild("idAuth").equalTo(idAuth).on("child_added", function (snapshot) {
+                console.log('in');
+                var u = self._createUser(snapshot.key, snapshot.val());
+                resolve(u);
+            });
+        })
+    },
+    findEmailByCredentials(idAuth) {
+        return new Promise((resolve, reject) => {
+            self.getByidAuth(idAuth).then((object) => {
+                email.createEmail(object.email, "reset your password", 'here is the link to reset your password <a href="http://localhost:3000/users/resetPassword/' + object.idAuth + '">link</a>').then(() => {
+                    resolve();
+                })
+            })
+        })
+    },
 
 
     _createUser(key, info) {
-        var obj = new User(key, info['idAuth'], info['credentials'], info['email'], null, info['typeUser']);
+        var obj = new User(key, info['idAuth'], info['email'], cryptr.decrypt(info['password']), info['typeUser']);
         return obj;
     }
 }

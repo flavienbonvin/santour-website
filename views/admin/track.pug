@@ -2,6 +2,7 @@ extends layout_admin
 
 
 block extra-header
+    link(rel="stylesheet", href="/css/track.css")
     script.
         var trackDetails = "#{JSON.stringify(track)}"
 
@@ -44,7 +45,7 @@ block content
                                 td= track.pauseDuration
 
 
-                div#track-details-tab2.col.s12.card-panel
+                div(onmouseleave="clearPoint()")#track-details-tab2.col.s12.card-panel
                     table.highlight
                         thead
                             tr
@@ -53,15 +54,19 @@ block content
                                 th #{translation.LATITUDE}
                                 th #{translation.LONGITUDE}
                                 th #{translation.TIME}
+                                th Action
                         tbody
                             each position, index in track.positions
-                                tr
+                                tr(onmouseover="highlightPoint("+position.latitude+","+position.longitude+")")
                                     td= index
                                     td= position.altitude
                                     td= position.latitude
                                     td= position.longitude
                                     td= position.time
-                div#track-details-tab3.col.s12.card-panel
+                                    td
+                                        a(href="/admin/tracks/"+track.id+"/removePoint/"+index).right.black-text
+                                            i.material-icons.right delete
+                div(onmouseleave="resetPOI()")#track-details-tab3.col.s12.card-panel
                     if(track.pois.length)
                         table.highlight
                             thead
@@ -76,7 +81,7 @@ block content
                                     th #{translation.TIME}
                             tbody
                                 each poi, index in track.pois
-                                    tr
+                                    tr(onmouseover="showPOI("+index+")")
                                         td= index
                                         td
                                             if poi.picture
@@ -89,7 +94,7 @@ block content
                                         td= poi.position.time
                     else
                         div #{translation.NOPOIS}
-                div#track-details-tab4.col.s12.card-panel
+                div(onmouseleave="resetPOD()")#track-details-tab4.col.s12.card-panel
                     if(track.pods.length)
                         table.highlight
                             thead
@@ -104,7 +109,7 @@ block content
                                     th #{translation.TIME}
                             tbody
                                 each pod, index in track.pods
-                                    tr
+                                    tr(onmouseover="showPOD("+index+")")
                                         td= index
                                         td
                                             if pod.picture

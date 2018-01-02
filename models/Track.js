@@ -9,18 +9,21 @@ var track = class Track {
      * @param {string} name
      * @param {Number} distance 
      * @param {Number} pauseDuration 
+     * @param {Number} duration 
+     * @param {string} durationString 
      * @param {bool} isForEveryone 
      * @param {Number} difficulty 
      * @param {string} idUser 
      * @param {Position[]} positions 
      * @param {POD[]} pods 
      * @param {POI[]} pois 
-     * @param {string} typeTrackID 
      */
-    constructor(id, name, distance, pauseDuration, isForEveryone, difficulty, idUser, positions, pods, pois, typeTrackID) {
+    constructor(id, name, distance, duration, durationString, pauseDuration, isForEveryone, difficulty, idUser, positions, pods, pois) {
         this.id = id;
         this.name = name;
         this.distance = distance;
+        this.duration = duration;
+        this.durationString = durationString;
         this.pauseDuration = pauseDuration;
         this.isForEveryone = isForEveryone;
         this.difficulty = difficulty;
@@ -28,21 +31,20 @@ var track = class Track {
         this.positions = positions;
         this.pods = pods;
         this.pois = pois;
-        this.typeTrackID = typeTrackID;
     }
 
-    convertToFirebase(){
+    convertToFirebase() {
         return {
-            name : this.name,
-            distance : this.distance,
-            pauseDuration : this.pauseDuration,
-            isForEveryone : this.isForEveryone,
-            difficulty : this.difficulty,
-            idUser : this.idUser,
-            positions : this.positions,
-            pods : this.pods,
-            pois : this.pois,
-            typeTrackID : this.typeTrackID
+            name: this.name,
+            distance: this.distance,
+            duration: this.duration,
+            pauseDuration: this.pauseDuration,
+            isForEveryone: this.isForEveryone,
+            difficulty: this.difficulty,
+            idUser: this.idUser,
+            positions: this.positions,
+            pods: this.pods,
+            pois: this.pois
         }
     }
 }

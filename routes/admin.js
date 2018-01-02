@@ -45,6 +45,16 @@ router.get('/tracks/:id', function (req, res, next) {
         res.render('admin/track', { title: 'Express', track: track });
     })
 });
+router.get('/tracks/:id/removePoint/:index', (req,res,next) =>{
+    var id = req.params.id;
+    var index = req.params.index;
+    trackDB.getById(id).then(function(track){
+        track.positions.splice(index,1);
+        trackDB.update(track).then(() =>{
+            res.redirect('/admin/tracks/'+id);
+        })
+    })
+})
 router.get('/tracks/remove/:id', function (req, res, next) {
     trackDB.delete(req.params.id).then(() => {
         res.redirect('/admin/tracks');
@@ -72,7 +82,7 @@ router.get('/users/add', function (req, res, next) {
     res.render('admin/user_new');
 });
 router.post('/users/add', function (req, res, next) {
-    userDB.add(new User(null, null, null, req.body.email, req.body.password, req.body.userType)).then(() => {
+    userDB.add(new User(null, null, req.body.email, req.body.password, req.body.userType)).then(() => {
         res.redirect('/admin/users');
     })
 })
@@ -100,7 +110,6 @@ router.get('/users/delete/:id', function (req, res, next) {
     })
 })
 
-
 /*
 ----------------Categories----------------
 */
@@ -123,6 +132,11 @@ router.get('/categories/remove/:id', function (req, res, next) {
         res.redirect("/admin/categories");
     })
 })
+router.post('/categories/update/:id', function (req, res, next) {
+    categoryPOIDB.update(new CategoryPOI(req.params.id, req.body.name)).then(() => {
+        res.redirect("/admin/categories");
+    })
+})
 
 /*
 ----------------Difficulties----------------
@@ -140,6 +154,11 @@ router.post('/difficulties', function (req, res, next) {
 })
 router.get('/difficulties/remove/:id', function (req, res, next) {
     categoryPODDB.delete(new CategoryPOD(req.params.id, "")).then(() => {
+        res.redirect("/admin/difficulties");
+    })
+})
+router.post('/difficulties/update/:id', function (req, res, next) {
+    categoryPODDB.update(new CategoryPOD(req.params.id, req.body.name)).then(() => {
         res.redirect("/admin/difficulties");
     })
 })
