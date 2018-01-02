@@ -164,8 +164,14 @@ router.post('/difficulties/update/:id', function (req, res, next) {
 })
 
 
+/*
+----------------Settings----------------
+*/
+
+
 router.get('/settings', function (req, res, next) {
-    res.render('admin/settings');
+    var info = settings.get();
+    res.render('admin/settings', info);
 });
 router.post('/settings', function (req, res, next) {
     settings.save(req.body.myMinNumber, req.body.mySeekValue).then(() => {
