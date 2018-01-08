@@ -116,7 +116,7 @@ var self = module.exports = {
             duration = duration + "s";
         }
 
-        var obj = new Track(key, info['name'], info['distance'], info['duration'], duration, info['pauseDuration'], info['forEveryone'], info['difficulty'], info['idUser'], positions, pods, pois);
+        var obj = new Track(key, info['name'], info['distance'], info['duration'], duration, info['difficulty'], info['idUser'], positions, pods, pois);
         return obj;
     },
     _createPosition(info) {

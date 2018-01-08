@@ -7,9 +7,12 @@ var poiSmall = null;
 var poiBig = null;
 var podSmall = null;
 var podBig = null;
+var startPoint = null;
+var endPoint = null;
 
 function initMap() {
     trackDetails = JSON.parse(trackDetails.replace(/&quot;/g, '"'));
+
 
     poiBig = {
         url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
@@ -24,6 +27,12 @@ function initMap() {
     }
     podSmall = {
         url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+    }
+    startPoint = {
+        url: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+    }
+    endPoint = {
+        url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
     }
 
     var coordinates = [];
@@ -41,6 +50,17 @@ function initMap() {
         center: coordinates[0]
     });
 
+    new google.maps.Marker({
+        position: coordinates[0],
+        map: map,
+        icon: startPoint
+    });
+
+    new google.maps.Marker({
+        position: coordinates[coordinates.length-1],
+        map: map,
+        icon: endPoint
+    });
 
 
     polyline = new google.maps.Polyline({
