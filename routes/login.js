@@ -24,12 +24,6 @@ router.post('/', function (req, res, next) {
 /*
 ----------------Password management----------------
 */
-router.get('/users/askResetPassword/:idAuth', function (req, res, next) {
-    var idAuth = req.params.idAuth;
-    userDB.findEmailByCredentials(idAuth).then((user) => {
-        res.send('ok');
-    })
-})
 router.get('/users/resetPassword/:idAuth', function (req, res, next) {
     res.render('resetpassword');
 })
@@ -40,11 +34,15 @@ router.post('/users/resetPassword/:idAuth', function (req, res, next) {
     })
 })
 
-router.get('/users/resetPasswordEmail/:email', function (req, res, next) {
-    var email = req.params.email;
+router.get('/users/resetPassword', function (req, res, next) {
+    res.render('resetpasswordAsk');
+})
+router.post('/users/resetPassword', function (req, res, next) {
+    var email = req.body.email;
     userDB.getByEmail(email).then((user) => {
-        console.log(user);
-        res.redirect('/users/resetPassword/'+user.idAuth);
+        userDB.findEmailByCredentials(user.idAuth).then((user) => {
+            res.redirect('/');
+        })
     })
 })
 
