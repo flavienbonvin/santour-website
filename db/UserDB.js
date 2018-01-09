@@ -9,7 +9,7 @@ var email = require('../modules/mail');
 
 var self = module.exports = {
     /**
-     * 
+     * @description Add a user to database and firebase auth
      * @param {User} object 
      */
     add(object) {
@@ -31,7 +31,7 @@ var self = module.exports = {
         })
     },
     /**
-     * 
+     * @description Update a user on the database and firbase auth
      * @param {User} object 
      */
     update(object) {
@@ -56,6 +56,11 @@ var self = module.exports = {
 
         })
     },
+    /**
+     * @description Reset the password from a user identified by an idAuth
+     * @param {string} newPassword 
+     * @param {string} idAuth 
+     */
     resetPassword(newPassword, idAuth) {
         return new Promise((resolve, reject) => {
             self.getByidAuth(idAuth).then((object) => {
@@ -72,7 +77,7 @@ var self = module.exports = {
         })
     },
     /**
-     * 
+     * @description delete a user from the database and the firebase auth
      * @param {string} id 
      */
     delete(id) {
@@ -88,6 +93,10 @@ var self = module.exports = {
             })
         })
     },
+    /**
+     * @description get all users from the database
+     * @returns {Promise<User[]>}
+     */
     getAll() {
         return new Promise((resolve, reject) => {
             firebase.ref('/users').once('value').then(function (objects) {
@@ -100,6 +109,11 @@ var self = module.exports = {
             });
         })
     },
+    /**
+     * @description get a user by id
+     * @param {string} id 
+     * @returns {Promise<User>}
+     */
     getById(id) {
         return new Promise((resolve, reject) => {
             firebase.ref('/users/' + id).once('value').then(function (objects) {
@@ -109,6 +123,11 @@ var self = module.exports = {
             });
         })
     },
+    /**
+     * @description find a user by pseudo
+     * @param {string} pseudo 
+     * @returns {Promise<User>}
+     */
     getByPseudo(pseudo) {
         return new Promise((resolve, reject) => {
             var ref = firebase.ref("/users");
@@ -119,7 +138,7 @@ var self = module.exports = {
         })
     },
     /**
-     * 
+     * @description Get a user by email
      * @param {*} email 
      * @returns {Promise<User>}
      */
@@ -136,7 +155,7 @@ var self = module.exports = {
         })
     },
     /**
-     * 
+     * @description get a user by idAuth
      * @param {*} idAuth 
      * @return {Promise<User>}
      */
@@ -150,6 +169,10 @@ var self = module.exports = {
             });
         })
     },
+    /**
+     * @description send an email to the account to reset password
+     * @param {string} idAuth 
+     */
     findEmailByCredentials(idAuth) {
         return new Promise((resolve, reject) => {
             self.getByidAuth(idAuth).then((object) => {

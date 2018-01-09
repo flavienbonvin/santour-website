@@ -6,6 +6,11 @@ var fs = require('fs');
 
 
 var self = module.exports = {
+    /**
+     * @description this function allow you to export a track in the JSON format
+     * @param {string} id 
+     * @returns {Promise<string>}
+     */
     exportToCSV(id) {
         return new Promise((resolve, reject) => {
             trackDB.getById(id).then((track) => {

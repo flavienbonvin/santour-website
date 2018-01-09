@@ -4,7 +4,7 @@ var Position = require('./Position');
 
 var track = class Track {
     /**
-     * 
+     * @description This object is a track recorded by a user
      * @param {string} id 
      * @param {string} name
      * @param {Number} distance 

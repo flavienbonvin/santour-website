@@ -12,6 +12,7 @@ var CategoryPOI = require('../models/CategoryPOI');
 var CategoryPOD = require('../models/CategoryPOD');
 var User = require('../models/User');
 
+// check login
 router.use((req, res, next) => {
     if (!req.session.idUser) {
         res.redirect("/");
@@ -69,6 +70,9 @@ router.get("/tracks/exports/:id", function (req, res, next) {
 })
 
 
+/*
+----------------User----------------
+*/
 
 /*GET list of users*/
 router.get('/users', function (req, res, next) {
@@ -180,6 +184,9 @@ router.post('/settings', function (req, res, next) {
 
 });
 
+/*
+----------------Logout----------------
+*/
 
 router.get('/logout', function (req, res, next) {
     login.logout(req.session);

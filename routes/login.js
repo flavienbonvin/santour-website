@@ -18,10 +18,12 @@ router.post('/', function (req, res, next) {
     login.login(req.body.username, req.body.password, req.session).then(() => {
         res.redirect('/admin');
     })
-
 });
 
-// reset password
+
+/*
+----------------Password management----------------
+*/
 router.get('/users/askResetPassword/:idAuth', function (req, res, next) {
     var idAuth = req.params.idAuth;
     userDB.findEmailByCredentials(idAuth).then((user) => {

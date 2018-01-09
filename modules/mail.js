@@ -4,8 +4,7 @@ const striptags = require('striptags');
 var self = module.exports = {
 
     /**
-     * Create a mail 
-     * 
+     * @description Create a mail and send it
      * @param {String} to 
      * @param {String} subject 
      * @param {String} html 
@@ -20,16 +19,16 @@ var self = module.exports = {
                 html: html
             };
 
-            self.sendEmail(self.createTransporter(), mailOptions).then(() => {
+            self._sendEmail(self._createTransporter(), mailOptions).then(() => {
                 resolve()
             })
         });
     },
 
     /**
-     * Create the mail transporter
+     * @description Create the mail transporter
      */
-    createTransporter() {
+    _createTransporter() {
         var transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
             port: 465,
@@ -43,12 +42,11 @@ var self = module.exports = {
     },
 
     /**
-     * Send the mail
-     * 
+     * @description Send the mail
      * @param {transporter} transporter 
      * @param {mailOptions} mailOptions 
      */
-    sendEmail(transporter, mailOptions) {
+    _sendEmail(transporter, mailOptions) {
         return new Promise((resolve, reject) => {
             transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {

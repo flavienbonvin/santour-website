@@ -3,7 +3,7 @@ var RatePOD = require('./RatePod');
 
 var pod = class POD {
     /**
-     * 
+     * @description this a point of danger
      * @param {string} name 
      * @param {string} description 
      * @param {string} picture 

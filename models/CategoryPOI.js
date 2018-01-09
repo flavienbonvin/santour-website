@@ -1,6 +1,6 @@
 var categroyPoi = class CategoryPOI{
     /**
-     * 
+     * @description This is a category used to define diffent category for point of interest
      * @param {string} id 
      * @param {string} name 
      */

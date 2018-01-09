@@ -3,7 +3,7 @@ var firebase = require('./firebase').database;
 
 var self = module.exports = {
     /**
-     * 
+     * @description Ajout un object de type category POD à la db
      * @param {CategoryPOD} object 
      */
     add(object) {
@@ -16,7 +16,7 @@ var self = module.exports = {
         })
     },
     /**
-     * 
+     *  @description Update un object de type category POD à la db
      * @param {CategoryPOD} object 
      */
     update(object) {
@@ -27,7 +27,7 @@ var self = module.exports = {
         })
     },
     /**
-     * 
+     * @description Supprime un object de type category POD à la db
      * @param {CategoryPOD} object 
      */
     delete(object) {
@@ -37,6 +37,10 @@ var self = module.exports = {
             })
         })
     },
+    /**
+     *  @description Retounre tous les objects de type category POD de la db
+     * @returns {Promise<CategoryPOD[]>}
+     */
     getAll() {
         return new Promise((resolve, reject) => {
             firebase.ref('/category_pod').once('value').then(function (objects) {
@@ -49,6 +53,11 @@ var self = module.exports = {
             });
         })
     },
+    /**
+     * @description Recupere un object de type category POD de la db par son ID
+     * @param {string} id 
+     * @returns {Promise<CategoryPOD>}
+     */
     getById(id){
         return new Promise((resolve, reject) => {
             firebase.ref('/category_pod/'+id).once('value').then(function (objects) {

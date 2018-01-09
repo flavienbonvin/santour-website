@@ -2,7 +2,7 @@ var Position = require('./Position');
 
 var poi = class POI {
     /**
-     * 
+     * @description this is a point of interest
      * @param {string} name 
      * @param {string} description 
      * @param {string} picture 

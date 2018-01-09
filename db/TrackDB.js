@@ -10,7 +10,7 @@ var fs = require('fs');
 
 var self = module.exports = {
     /**
-     * 
+     * @description insert track inside the db
      * @param {Track} object 
      */
     add(object) {
@@ -23,7 +23,7 @@ var self = module.exports = {
         })
     },
     /**
-     * 
+     * @description update a track on the db
      * @param {Track} object 
      */
     update(object) {
@@ -34,7 +34,7 @@ var self = module.exports = {
         })
     },
     /**
-     * 
+     * @description delete a track by id
      * @param {string} id 
      */
     delete(id) {
@@ -44,6 +44,10 @@ var self = module.exports = {
             })
         })
     },
+    /**
+     * @description Get all trakcs from the db
+     * @returns {Promise<Track[]>}
+     */
     getAll() {
         return new Promise((resolve, reject) => {
             firebase.ref('/tracks').once('value').then(function (objects) {
@@ -57,7 +61,7 @@ var self = module.exports = {
         })
     },
     /**
-     * 
+     * @description get a track by id from the db
      * @param {string} id
      * @return {Promise<Track>}
      */

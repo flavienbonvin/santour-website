@@ -3,7 +3,7 @@ var firebase = require('./firebase').database;
 
 var self = module.exports = {
     /**
-     * 
+     * @description Add a category poi to database
      * @param {CategoryPOI} object 
      */
     add(object) {
@@ -16,7 +16,7 @@ var self = module.exports = {
         })
     },
     /**
-     * 
+     * @description update a category poi on the database
      * @param {CategoryPOI} object 
      */
     update(object) {
@@ -27,7 +27,7 @@ var self = module.exports = {
         })
     },
     /**
-     * 
+     * @description delete a category poi on the database
      * @param {CategoryPOI} object 
      */
     delete(object) {
@@ -37,6 +37,10 @@ var self = module.exports = {
             })
         })
     },
+    /**
+     * @description get all categories poi from the db
+     * @returns {Promise<CategoryPOI[]>}
+     */
     getAll() {
         return new Promise((resolve, reject) => {
             firebase.ref('/category_poi').once('value').then(function (objects) {
@@ -49,6 +53,11 @@ var self = module.exports = {
             });
         })
     },
+    /**
+     * @description get a catergory poi by id
+     * @param {string} id 
+     * @returns {Promise<CategoryPOI>}
+     */
     getById(id){
         return new Promise((resolve, reject) => {
             firebase.ref('/category_poi/'+id).once('value').then(function (objects) {

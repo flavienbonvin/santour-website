@@ -1,6 +1,6 @@
 var user = class User {
     /**
-     * 
+     * @description a user a an object that allow a person to use website or application
      * @param {string} id 
      * @param {string} idAuth 
      * @param {string} email 

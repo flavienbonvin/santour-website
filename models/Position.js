@@ -1,6 +1,6 @@
 var position = class Position {
     /**
-     * 
+     * @description this is a position to display track / pod / poi on a map
      * @param {Number} latitude 
      * @param {Number} longitude 
      * @param {Number} altitude 
