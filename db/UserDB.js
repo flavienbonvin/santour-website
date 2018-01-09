@@ -14,7 +14,6 @@ var self = module.exports = {
      */
     add(object) {
         return new Promise((resolve, reject) => {
-            console.log(object);
             auth.createUserWithEmailAndPassword(object.email, object.password).then((res) => {
                 var newPostKey = firebase.ref('/users').push().key;
                 object.id = newPostKey;
