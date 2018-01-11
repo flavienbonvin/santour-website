@@ -32,10 +32,6 @@ block content
                         i.material-icons.prefix lock_outline
                         input#newpassword.validate(type="password", value="",name="newpassword")
                         label(for="newpassword") #{translation.PASSWORD}
-                    div#confirmpassword-input.input-field.col.s6
-                        i.material-icons.prefix lock_outline
-                        input#confirmpassword.validate(type="password", value="")
-                        label(for="confirmpassword") #{translation.PASSWORD}
                     input(type="hidden",name="credentials", value=user.credentials)
                     input(type="hidden",name="idAuth", value=user.idAuth)
                 div.row

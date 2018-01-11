@@ -4,8 +4,6 @@ block content
     div.container
         a.waves-effect.waves-light.btn.right.users-action(onclick='newUserMode()')
             i.material-icons.white-text person_add
-        a.waves-effect.waves-light.btn.right.users-action(onclick='')
-            i.material-icons.white-text file_download
         h2 #{translation.USERS}
         table#tableUsers.highlight
             thead
@@ -13,7 +11,7 @@ block content
                     th #{translation.EMAIL}
                     th #{translation.TYPE}
                     th.right #{translation.ACTION}
-            tbody
+            tbody#bodyTracks
                 each user in users
                     tr
                         .user
