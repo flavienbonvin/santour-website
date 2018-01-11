@@ -78,7 +78,6 @@ block content
                                     th #{translation.ALTITUDE}
                                     th #{translation.LATITUDE}
                                     th #{translation.LONGITUDE}
-                                    th #{translation.TIME}
                             tbody
                                 each poi, index in track.pois
                                     tr(onmouseover="showPOI("+index+")")
@@ -91,7 +90,6 @@ block content
                                         td= poi.position.altitude
                                         td= poi.position.latitude
                                         td= poi.position.longitude
-                                        td= poi.position.time
                     else
                         div #{translation.NOPOIS}
                 div(onmouseleave="resetPOD()")#track-details-tab4.col.s12.card-panel
@@ -106,7 +104,6 @@ block content
                                     th #{translation.ALTITUDE}
                                     th #{translation.LATITUDE}
                                     th #{translation.LONGITUDE}
-                                    th #{translation.TIME}
                             tbody
                                 each pod, index in track.pods
                                     tr(onmouseover="showPOD("+index+")")
@@ -119,7 +116,6 @@ block content
                                         td= pod.position.altitude
                                         td= pod.position.latitude
                                         td= pod.position.longitude
-                                        td= pod.position.time
                     else
                         div #{translation.NOPODS}
     script(src='/js/admin/map.js', type="text/javascript")

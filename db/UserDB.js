@@ -175,7 +175,7 @@ var self = module.exports = {
     findEmailByCredentials(idAuth) {
         return new Promise((resolve, reject) => {
             self.getByidAuth(idAuth).then((object) => {
-                email.createEmail(object.email, "reset your password", 'here is the link to reset your password <a href="http://localhost:3000/users/resetPassword/' + object.idAuth + '">link</a>').then(() => {
+                email.createEmail(object.email, "reset your password", 'here is the link to reset your password <a href="http://pikj.ddns.net:666/users/resetPassword/' + object.idAuth + '">link</a>').then(() => {
                     resolve();
                 })
             })
