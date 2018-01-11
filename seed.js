@@ -9,11 +9,16 @@ var u = new User(null,null,"default@default.com","password","admin");
 
 
 deleteAllTrack().then(() => {
+    console.log('delete all track');
     deleteAllPOD().then(() => {
+        console.log('delete all POD')
         deleteAllPOI().then(() => {
+            console.log('delete all POI')
             deleteAllUser().then(() => {
+                console.log('delete all User');
                 userDB.add(u).then(() => {
                     console.log('fini');
+                    process.exit(0);
                 })
             })
         })
