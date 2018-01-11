@@ -178,7 +178,7 @@ router.get('/settings', function (req, res, next) {
     res.render('admin/settings', info);
 });
 router.post('/settings', function (req, res, next) {
-    settings.save(req.body.myMinNumber, req.body.mySeekValue).then(() => {
+    settings.save(req.body.myMinNumber, 0).then(() => {
         res.redirect('/admin/settings');
     })
 
