@@ -1,3 +1,16 @@
 .collapsible-header{
   display:block;
 }
+
+.brand-logo svg
+{
+  height: 2em;
+}
+.password-margin
+{
+  margin-top: 8em;
+}
+
+.language a{
+  margin: 15px;
+}
