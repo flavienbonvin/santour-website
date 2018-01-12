@@ -102,8 +102,8 @@ router.get('/users/:id', function (req, res, next) {
 router.post('/users/:id', function (req, res, next) {
     var id = req.params.id;
     console.log(req.body);
-    userDB.update(new User(id,req.body.idAuth,req.body.credentials,req.body.email,req.body.newpassword,req.body.userType)).then(function (user) {
-        res.render('admin/user', { title: 'Express', user: user });
+    userDB.update(new User(id,req.body.idAuth,req.body.email,req.body.newpassword,req.body.userType)).then(function (user) {
+        res.redirect('/admin/users/'+id);
     })
 });
 

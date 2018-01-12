@@ -16,7 +16,8 @@ block content
                         label(for="id") #{translation.ID}
                     div.input-field.col.s6
                         i.material-icons.prefix email
-                        input#email.validate(type="email",name="email", value=user.email, disabled)
+                        input#email.validate(type="email", value=user.email, disabled)
+                        input(type="hidden",name="email",value=user.email)
                         label(for="email") #{translation.EMAIL}
                     div.input-field.col.s6
                         i.material-icons.prefix group

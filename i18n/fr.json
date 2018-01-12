@@ -14,7 +14,7 @@
   "FRENCH": "Français",
   "ENGLISH": "Anglais",
   "GERMAN": "Allemand",
-  "DISTANCEMIN": "Distance minimale",
+  "DISTANCEMIN": "Distance minimale entre 2 points GPS",
   "DISTANCEMAX": "Distance maximale",
   "EXPORTDATA": "Exporter la base de donnée",
 
