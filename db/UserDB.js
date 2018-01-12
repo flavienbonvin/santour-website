@@ -48,7 +48,7 @@ var self = module.exports = {
                 });
             } else {
                 self.getById(object.id).then((userInDB) => {
-                    object.password = cryptr.encrypt(object.password);
+                    object.password = userInDB.password;
                     firebase.ref('/users/' + object.id).set(object.convertToFirebase()).then(() => {
                         resolve();
                     })
