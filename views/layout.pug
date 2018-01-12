@@ -9,7 +9,8 @@ html
     script(src="/js/materialize.min.js")
     script(src="/js/default.js")
   body
-    nav
-      .nav-wrapper
-        a.brand-logo.center(href='#') SanTour
+    nav.teal.lighten-2y
+      div.nav-wrapper
+        a.brand-logo.center(href='#')
+            include ../public/images/logo.svg
     block content

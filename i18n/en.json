@@ -2,6 +2,8 @@
 
   "TRACKS" : "Tracks",
   "LOGIN" : "Login",
+  "LOGOUT": "Logout",
+  "ACTIONS": "Actions",
   "USERNAME": "Username",
   "PASSWORD": "Password",
 
@@ -19,6 +21,7 @@
   "EXPORTDATA": "Export database",
 
   "RESETPASS": "Reset your password",
+  "RESETPASSMESSAGE": "Please enter your email to reset your password",
   "VALUESEEKBAR": "SeekBar's value",
   "ACTION": "Action",
   "TIMER" : "Duration",
@@ -59,7 +62,9 @@
   "DELETECONFIRMATION": "Confirmation of deletion",
   "CONFIRM": "Confirm",
   "CANCEL": "Cancel",
-  "DELETEMESSAGE": "Please confirm the deletion of the track"
+  "DELETEMESSAGE": "Please confirm the deletion of the track",
+
+  "SETTINGS": "Settings"
 
 
 

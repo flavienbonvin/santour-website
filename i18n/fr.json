@@ -2,6 +2,8 @@
 
   "TRACKS" : "Parcours",
   "LOGIN" : "Se connecter",
+  "LOGOUT": "Se déconnecter",
+  "ACTIONS": "Actions",
   "USERNAME": "Pseudo",
   "PASSWORD": "Mot de passe",
 
@@ -19,6 +21,7 @@
   "EXPORTDATA": "Exporter la base de donnée",
 
   "RESETPASS": "Réinitialiser votre mot de passe",
+  "RESETPASSMESSAGE": "Please enter your email to reset your password",
   "VALUESEEKBAR": "Valeur des SeekBars",
   "ACTION": "Action",
   "TIMER" : "Durée",
@@ -62,7 +65,9 @@
   "DELETECONFIRMATION" : "Confirmation de suppression",
   "CONFIRM" : "Confirmer",
   "CANCEL": "Annuler",
-  "DELETEMESSAGE" : "Veuillez confirmer la suppression de la track"
+  "DELETEMESSAGE" : "Veuillez confirmer la suppression de la track",
+
+  "SETTINGS": "Paramètres"
 
 
 

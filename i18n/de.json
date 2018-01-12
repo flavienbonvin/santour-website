@@ -2,6 +2,8 @@
 
   "TRACKS" : "Spuren",
   "LOGIN" : "Anmeldung",
+  "LOGOUT": "Abmeldung",
+  "ACTIONS": "Aktionen",
   "USERNAME": "Nutzername",
   "PASSWORD": "Passwort",
 
@@ -19,6 +21,7 @@
   "EXPORTDATA": "Datenbank exportieren",
 
   "RESETPASS": "Setze dein Passwort zurück",
+  "RESETPASSMESSAGE": "Bitte geben Sie Ihre E-Mail-Adresse ein, um Ihr Passwort zurückzusetzen.",
   "VALUESEEKBAR": "Wert von SeekBars",
   "ACTION": "Aktion",
   "TIMER" : "Dauer",
@@ -62,7 +65,9 @@
   "DELETECONFIRMATION": "Bestätigung der Löschung",
   "CONFIRM": "Bestätigen",
   "CANCEL": "Abbrechen",
-  "DELETEMESSAGE": "Bitte bestätigen Sie die Löschung des Tracks"
+  "DELETEMESSAGE": "Bitte bestätigen Sie die Löschung des Tracks",
+
+  "SETTINGS": "Einstellungen"
 
 
 }
