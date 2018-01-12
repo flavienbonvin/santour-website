@@ -47,8 +47,11 @@ var self = module.exports = {
                     })
                 });
             } else {
-                firebase.ref('/users/' + object.id).set(object.convertToFirebase()).then(() => {
-                    resolve();
+                self.getById(object.id).then((userInDB) => {
+                    object.password = cryptr.encrypt(object.password);
+                    firebase.ref('/users/' + object.id).set(object.convertToFirebase()).then(() => {
+                        resolve();
+                    })
                 })
             }
 
@@ -144,7 +147,7 @@ var self = module.exports = {
     getByEmail(email) {
         return new Promise((resolve, reject) => {
             var ref = firebase.ref("/users");
-            
+
             ref.orderByChild("email").equalTo(email).on("child_added", function (snapshot) {
                 console.log('ici');
                 console.log(snapshot);
